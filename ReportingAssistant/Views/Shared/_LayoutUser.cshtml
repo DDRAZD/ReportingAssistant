@@ -1,0 +1,42 @@
+﻿
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/fontawesome.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/umd/popper.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <title>@ViewBag.Title</title>
+    @RenderBody()
+</head>
+<body>
+    
+        <div class="row">
+            <div class="col-2 bg-primary" text-white" style="min-height:1050px; padding:0px">
+                <!--adding a side bar-->
+                <div class="list-group">
+                    <a href="/home/index" class="list-group-item text-white" style="background-color:transparent">Home</a>
+                    <a href="/home/Login"  class="list-group-item text-white" style="background-color:transparent">Login</a>
+                    <a href="/home/Register"  class="list-group-item text-white" style="background-color:transparent">Register</a>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-10" style="min-height:610px; padding:20px">
+                <div class="container-fluid" style="padding: 0px">
+
+                </div>
+            </div>
+        </div>
+    
+
+</body>
+</html>
