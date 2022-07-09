@@ -3,18 +3,37 @@ Assignment in Udemy MVC project
 Used the following packages in Nuget package manager to set up:
 
 Install-Package bootstrap -Version 5.2.0-beta1
+
 Install-Package Font.Awesome -Version 5.15.4
+
 Install-Package jQuery -Version 3.6.0
+
 Install-Package popper.js -Version 1.16.1
 
-install-package EntityFrameWork
 
+install-package EntityFrameWork
+----------------------------------------------------------------------------------------------
 
 Building the scaffolding first with basic layout pages and identity management
+------------------------------------------------------------------------------
+
+for identity management, added this:
+
+Install-Package Microsoft.AspNet.Identity.EntityFramework -Version 2.2.3
+
+created a connection string in web.config
+
+-- afterwards,
+
+Enable-Migrations -ContextTypeName ReportingAssistant.Identity.ApplicationDbContext -MigrationsDirectory IdentityMigrations
+             
+             
+ Add-Migration -Configuration ReportingAssistant.IdentityMigrations.Configuration Initial(this is an arbitrary name)
+            then
+ update-database -Configuration ReportingAssistant.IdentityMigrations.Configuration
 
 
-
-
+ ------------------------------------------------------
 
 
 
