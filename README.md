@@ -21,7 +21,31 @@ for identity management, added this:
 
 Install-Package Microsoft.AspNet.Identity.EntityFramework -Version 2.2.3
 
+Install-Package Microsoft.AspNet.Identity.Owin
+
+Install-Package Microsoft.Owin.Host.SystemWeb
+
 created a connection string in web.config
+
+
+After that, you are required to createa an OWIN Startup class:
+* on prject level, create Startup.cs -> "add new item"
+go to "web"
+select "OWIN Statup class"
+
+
+Then, the OWIN startup file, import: 
+using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security.Cookies;
+using Microsoft.AspNet.Identity.EntityFramework;
+
+then add a statement to use Cookie Authenticaion:
+
+app.UseCookieAuthentication(new CookieAuthenticationOptions() { AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie, LoginPath=new PathString("/Account/Login") });
+
+
+
+
 
 -- afterwards,
 
