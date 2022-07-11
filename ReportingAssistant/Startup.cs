@@ -53,33 +53,102 @@ namespace ReportingAssistant
                 roleManager.Create(role);
             }
 
-            //creating at least one admin user if the role is empty and there are no users in it
-
-            if(!(userManager.FindByName("admin")==null))
-            {
-                var user = new ApplicationUser();
-                user.UserName = "admin";
-                user.Email = "admin@gmail.com";
-                string userPassword = "123";
-               //trying to create the user (the first admin):
-                var chkUser = userManager.Create(user,userPassword);
-
-                if(chkUser.Succeeded)
-                {
-                    //if the user was created, we can now add it to the admin role (tying the roles table to the user table in this case)
-                    userManager.AddToRole(user.Id, "Admin");
-                }
-
-            }
-
-            //creating the regular user role
             if (!roleManager.RoleExists("User"))
             {
                 var role = new IdentityRole();
                 role.Name = "User";
                 roleManager.Create(role);
             }
-            //no need to create default user as we will just register them (different than admin)
+
+            //creating at least one admin user if the role is empty and there are no users in it
+
+            if ((userManager.FindByName("admin1") == null))
+            {
+                var user = new ApplicationUser();
+                user.UserName = "admin1";
+                user.Email = "admin1@gmail.com";
+                string userPassword = "123456";
+                //trying to create the user (the first admin):
+                var chkUser = userManager.Create(user, userPassword);
+
+                if (chkUser.Succeeded)
+                {
+                    //if the user was created, we can now add it to the admin role (tying the roles table to the user table in this case)
+                    userManager.AddToRole(user.Id, "Admin");
+                    userManager.AddToRole(user.Id, "User");
+                }
+
+            }
+
+
+            //--------------------------------------------------------------------------------------
+            //creating the deault admins and users the assignment instructed to:
+            if (userManager.FindByName("admin2")==null)
+            {
+                var user = new ApplicationUser();
+                user.UserName = "admin2";
+                user.Email = "admin2@gmail.com";
+                string userPassword = "123456";
+                //trying to create the user (the first admin):
+                var chkUser = userManager.Create(user, userPassword);
+
+                if (chkUser.Succeeded)
+                {
+                    //if the user was created, we can now add it to the admin role (tying the roles table to the user table in this case)
+                    userManager.AddToRole(user.Id, "Admin");
+                }
+
+            }
+            if (userManager.FindByName("admin3") == null)
+            {
+                var user = new ApplicationUser();
+                user.UserName = "admin3";
+                user.Email = "admin3@gmail.com";
+                string userPassword = "123456";
+                //trying to create the user (the first admin):
+                var chkUser = userManager.Create(user, userPassword);
+
+                if (chkUser.Succeeded)
+                {
+                    //if the user was created, we can now add it to the admin role (tying the roles table to the user table in this case)
+                    userManager.AddToRole(user.Id, "Admin");
+                }
+
+            }
+            
+            if (userManager.FindByName("user2") == null)
+            {
+                var user = new ApplicationUser();
+                user.UserName = "user2";
+                user.Email = "user2@gmail.com";
+                string userPassword = "123456";
+                //trying to create the user (the first admin):
+                var chkUser = userManager.Create(user, userPassword);
+
+                if (chkUser.Succeeded)
+                {
+                    //if the user was created, we can now add it to the admin role (tying the roles table to the user table in this case)
+                    userManager.AddToRole(user.Id, "User");
+                }
+
+            }
+            if (userManager.FindByName("user3") == null)
+            {
+                var user = new ApplicationUser();
+                user.UserName = "user3";
+                user.Email = "user3@gmail.com";
+                string userPassword = "123456";
+                //trying to create the user (the first admin):
+                var chkUser = userManager.Create(user, userPassword);
+
+                if (chkUser.Succeeded)
+                {
+                    //if the user was created, we can now add it to the admin role (tying the roles table to the user table in this case)
+                    userManager.AddToRole(user.Id, "User");
+                }
+
+            }
+
 
         }
     }

@@ -290,6 +290,10 @@
     <Compile Include="IdentityMigrations\202207082229506_Initial1.designer.cs">
       <DependentUpon>202207082229506_Initial1.cs</DependentUpon>
     </Compile>
+    <Compile Include="IdentityMigrations\202207111702256_IdentityAdded.cs" />
+    <Compile Include="IdentityMigrations\202207111702256_IdentityAdded.designer.cs">
+      <DependentUpon>202207111702256_IdentityAdded.cs</DependentUpon>
+    </Compile>
     <Compile Include="IdentityMigrations\Configuration.cs" />
     <Compile Include="Identity\ApplicationDbContext.cs" />
     <Compile Include="Identity\ApplicationUser.cs" />
@@ -358,6 +362,9 @@
   <ItemGroup>
     <EmbeddedResource Include="IdentityMigrations\202207082229506_Initial1.resx">
       <DependentUpon>202207082229506_Initial1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IdentityMigrations\202207111702256_IdentityAdded.resx">
+      <DependentUpon>202207111702256_IdentityAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
