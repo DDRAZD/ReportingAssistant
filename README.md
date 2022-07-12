@@ -227,3 +227,111 @@ Use Exception Handling using Custom Errors, IExceptionFilter
 Use Service Pattern along with Repository Pattern
 
 Use jQuery Validation Plugin, Bootstrap and Font-Awesome.
+
+
+Registration page:
+Using this screen, the user can register.
+
+The "username", "password", "confirm password", "email" are mandatory fields.
+
+Also make general validations like checking the pattern of password, email, mobile and date of birth.
+
+Login page:
+It is a common login page for both admin's and user's.
+
+If he is an admin, redirect to "admin home page" of "admin area".
+
+If he is a "user", redirect to "user home page".
+
+home page:
+After successful login, this user home page appears.
+
+The current user name should appear .
+
+My issues page:
+Once  "My Issues" page is opened, it has to display the two dates (today and yesterday), automatically.
+
+
+
+Once he clicks on a date (collapsible in bootstrap), it has to display three options:
+
+"Tasks Assigned", "Tasks Done" and "Final Comments".
+
+Even these three options also collapsible items.
+
+[Use cards and collapsible components in bootstrap].
+
+
+My issues page - Tasks Assigned Page:
+The admin names [who have given tasks to the current user] are shown as tabs
+
+In each tab of admin, all the tasks assigned by that admin are shown.
+
+For example, in "harika" (is admin), the list of tasks assigned by "harika" to "nuzhath" are shown.
+
+
+User - My Issues Page - Tasks Done
+Under the "Tasks Done" collapsible card, it has to display the list of existing "tasks done" records, given by the current user.
+
+It shows screen name, and description. It would be better if project name also displayed.
+
+User - My Issues Page - New Task Done
+
+The user can select the project name from dropdown (loaded from projects table), enter the screen name and description and click on "Save" at above.
+
+When the user clicks on "Save", the existing records of "Tasks Done" should be updated; and also new "task done" should be inserted, if the description is not empty.
+
+It is not must to add new task, at each time of clicking "Save" button. One can click on "Save" only to edit existing records of "tasks done".
+
+
+
+User - My Issues Page - Final Comments
+Display the existing records of "final comments", group-up by admin, in the form of bootstrap tabs, just like "Tasks assigned".
+
+Same kind of output for other dates also [Today + Yesterday].
+
+The user can modify, add "tasks done" details of both dates at-a-time and click on "Save".
+
+User - My Profile Page
+Display the profile of current user.
+
+User - Change Password page
+
+Admin - Home Page
+
+
+Admin - Categories Page
+
+Admin - Crate Category page
+Admin can add category;
+
+Redirect to "Categories" page, after inserting.
+
+Add necessary validations, as explained above
+
+Admin - Edit Category Page
+Category can be edited.
+
+Add necessary validations, as explained above.
+
+Admin - Delete Category Page
+Admin - Search Categories
+Admin -  Projects Page
+Admin - Create Project Page
+Admin - Edit Project Page
+Delete Project Page
+Admin - Search Projects Page
+Admin - Issues Page
+
+Admin can see all the user's tasks assigned / tasks done / final comments [given by any admin].
+
+But admin can can edit "tasks assigned" / "final comments" of his own records only.
+
+Admin can add "tasks assigned" and "final comments" to any user for any date.
+
+In the "Issues History" page, same screen needs to be repeated for one week [instead of two dates].
+
+
+
+
+

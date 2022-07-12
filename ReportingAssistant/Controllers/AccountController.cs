@@ -1,0 +1,68 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using ReportingAssistant.ViewModels;
+using ReportingAssistant.Identity;
+using Microsoft.AspNet.Identity;
+using System.Web.Helpers;
+
+namespace ReportingAssistant.Controllers
+{
+    public class AccountController : Controller
+    {
+        // GET: Account
+       
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        public ActionResult Register()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Register(RegisterViewModel rvm)
+        {
+            if (ModelState.IsValid)//validation is valid of all the formats and required fields
+            {
+                //register
+                var appDbContext = new ApplicationDbContext();
+                var userStore = new ApplicationUserStore(appDbContext);
+                var userManager = new ApplicationUserManager(userStore);
+                var passwordHash = Crypto.HashPassword(rvm.Password);
+                var user = new ApplicationUser() { Email = rvm.Email, UserName = rvm.Username, PasswordHash = passwordHash, City = rvm.City, Country = rvm.Country, Address = rvm.Address, PhoneNumber = rvm.Mobile };
+
+                IdentityResult result = userManager.Create(user);
+
+                if (result.Succeeded)
+                {
+                    //role
+                    userManager.AddToRole(user.Id, "User");
+
+                    //  LoginUser(userManager, user);
+                    this.LoginUser(userManager, user);
+
+
+                }
+
+                return RedirectToAction("Register", "Account");
+            }
+            else
+            {
+                ModelState.AddModelError("My Error", "THe registration was not valid");
+                return View();//redirection to the same view but the error msssage from ModelState will be added at the bottom of the view as validation summary is there
+            }
+        }
+        [NonAction]
+        public void LoginUser(ApplicationUserManager userManager, ApplicationUser user)
+        {
+            var authernicationManager = HttpContext.GetOwinContext().Authentication;
+            var userIdentity = userManager.CreateIdentity(user,DefaultAuthenticationTypes.ApplicationCookie);
+            authernicationManager.SignIn(new Microsoft.Owin.Security.AuthenticationProperties(),userIdentity);
+        }
+    }
+}

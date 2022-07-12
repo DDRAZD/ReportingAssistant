@@ -277,11 +277,12 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Login.cshtml" />
-    <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -294,6 +295,10 @@
     <Compile Include="IdentityMigrations\202207111702256_IdentityAdded.designer.cs">
       <DependentUpon>202207111702256_IdentityAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="IdentityMigrations\202207121755192_UpdatedIdentifyDB.cs" />
+    <Compile Include="IdentityMigrations\202207121755192_UpdatedIdentifyDB.designer.cs">
+      <DependentUpon>202207121755192_UpdatedIdentifyDB.cs</DependentUpon>
+    </Compile>
     <Compile Include="IdentityMigrations\Configuration.cs" />
     <Compile Include="Identity\ApplicationDbContext.cs" />
     <Compile Include="Identity\ApplicationUser.cs" />
@@ -301,6 +306,7 @@
     <Compile Include="Identity\ApplicationUserStore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\RegisterViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -365,6 +371,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="IdentityMigrations\202207111702256_IdentityAdded.resx">
       <DependentUpon>202207111702256_IdentityAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IdentityMigrations\202207121755192_UpdatedIdentifyDB.resx">
+      <DependentUpon>202207121755192_UpdatedIdentifyDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

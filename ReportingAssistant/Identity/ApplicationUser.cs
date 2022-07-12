@@ -12,5 +12,12 @@ namespace ReportingAssistant.Identity
     {
         //all the fields will already come from IdentityUser (use 'view definition' to see) you can add more columns and values by adding paramters here
         
+       
+       
+       
+        public string Address { get; set; }
+        public string City { get; set; }
+        public string Country { get; set; }
+
     }
 }

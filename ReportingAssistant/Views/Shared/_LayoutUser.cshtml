@@ -13,30 +13,34 @@
     <script src="~/Scripts/umd/popper.js"></script>
     <script src="~/Scripts/bootstrap.js"></script>
     <title>@ViewBag.Title</title>
-    @RenderBody()
+    <style>
+        .field-validation-error, .validation-summary-errors {
+            color: red;
+        }
+    </style>
 </head>
 <body>
-    
-        <div class="row">
-            <div class="col-2 bg-primary" text-white" style="min-height:1050px; padding:0px">
-                <!--adding a side bar-->
-                <div class="list-group">
-                    <a href="/home/index" class="list-group-item text-white" style="background-color:transparent">Home</a>
-                    <a href="/home/Login"  class="list-group-item text-white" style="background-color:transparent">Login</a>
-                    <a href="/home/Register"  class="list-group-item text-white" style="background-color:transparent">Register</a>
 
-                </div>
+    <div class="row">
+        <div class="col-2 bg-primary" text-white" style="min-height:1050px; padding:0px">
+            <!--adding a side bar-->
+            <div class="list-group">
+                <a href="/home/index" class="list-group-item text-white" style="background-color:transparent">Home</a>
+                <a href="/Account/Login" class="list-group-item text-white" style="background-color:transparent">Login</a>
+                <a href="/Account/Register" class="list-group-item text-white" style="background-color:transparent">Register</a>
 
             </div>
 
+        </div>
 
-            <div class="col-10" style="min-height:610px; padding:20px">
-                <div class="container-fluid" style="padding: 0px">
 
-                </div>
+        <div class="col-10" style="min-height:610px; padding:20px">
+            <div class="container-fluid" style="padding: 0px">
+                @RenderBody()
             </div>
         </div>
+    </div>
     
-
+    
 </body>
 </html>
