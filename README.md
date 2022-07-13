@@ -10,6 +10,11 @@ Install-Package jQuery -Version 3.6.0
 
 Install-Package popper.js -Version 1.16.1
 
+For validation in ViewModel using jQuery:
+
+install-package jQuery.Validation
+install-package Microsoft.jQuery.Unobtrusive.Validation
+
 
 install-package EntityFrameWork
 ----------------------------------------------------------------------------------------------

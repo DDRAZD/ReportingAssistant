@@ -20,10 +20,42 @@ namespace ReportingAssistant.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Login(RegisterViewModel lvm)
+        {
+            var appDbContext = new ApplicationDbContext();
+            var userStore = new ApplicationUserStore(appDbContext);
+            var userManager = new ApplicationUserManager(userStore);
+            var user = userManager.Find(lvm.Username, lvm.Password);
+            if (user != null)
+            {
+                this.LoginUser(userManager, user);
+                return RedirectToAction("UserHome", "Account");
+            }
+            else
+            {
+                ModelState.AddModelError("myerror", "Invalid username or password");
+                return View();
+
+            }
+           
+        }
+        public ActionResult UserHome()
+        {
+            var appDbContext = new ApplicationDbContext();
+            var userStore = new ApplicationUserStore(appDbContext);
+            var userManager = new ApplicationUserManager(userStore);
+            ApplicationUser appUser = userManager.FindById(User.Identity.GetUserId());
+            return View(appUser);
+        }
+
+
         public ActionResult Register()
         {
             return View();
         }
+
+
         [HttpPost]
         public ActionResult Register(RegisterViewModel rvm)
         {
@@ -45,7 +77,7 @@ namespace ReportingAssistant.Controllers
 
                     //  LoginUser(userManager, user);
                     this.LoginUser(userManager, user);
-
+                    return RedirectToAction("UserHome", "Account");
 
                 }
 
@@ -57,6 +89,10 @@ namespace ReportingAssistant.Controllers
                 return View();//redirection to the same view but the error msssage from ModelState will be added at the bottom of the view as validation summary is there
             }
         }
+
+
+
+
         [NonAction]
         public void LoginUser(ApplicationUserManager userManager, ApplicationUser user)
         {

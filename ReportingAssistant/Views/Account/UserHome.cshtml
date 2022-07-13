@@ -1,0 +1,13 @@
+﻿@model ReportingAssistant.Identity.ApplicationUser
+
+@{
+    ViewBag.Title = "UserHome";
+}
+
+<h2>UserHome</h2>
+
+
+@if (User.Identity.IsAuthenticated == true)
+{
+    <h3>Hello @Model.UserName</h3>
+}
