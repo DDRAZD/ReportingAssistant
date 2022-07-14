@@ -25,20 +25,9 @@
         <div class="col-2 bg-primary" text-white" style="min-height:1050px; padding:0px">
             <!--adding a side bar-->
             <div class="list-group">
-                <a href="/home/index" class="list-group-item text-white" style="background-color:transparent">Home</a>
-
-                @if (User.Identity.IsAuthenticated == true)
-                {
-                    <a href="/Account/Logout" class="list-group-item text-white" style="background-color:transparent" >Logout</a> 
-                    <a href="@Url.Action("UserHome","Account")" class="list-group-item text-white" style="background-color:transparent">My Profile</a> 
-
-                }
-                else
-                {
-                    <a href="/Account/Login" class="list-group-item text-white" style="background-color:transparent">Login</a>
-                    <a href="/Account/Register" class="list-group-item text-white" style="background-color:transparent">Register</a>
-                }
-
+                <a href="/admin/home/index" class="list-group-item text-white" style="background-color:transparent">Home</a>
+                <a href="/Account/Login" class="list-group-item text-white" style="background-color:transparent">Login</a>
+                <a href="/Account/Register" class="list-group-item text-white" style="background-color:transparent">Register</a>
             </div>
         </div>
         <div class="col-10" style="min-height:610px; padding:20px">
@@ -47,5 +36,5 @@
             </div>
         </div>
     </div>
- </body>
+</body>
 </html>

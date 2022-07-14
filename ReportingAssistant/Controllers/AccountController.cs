@@ -100,5 +100,13 @@ namespace ReportingAssistant.Controllers
             var userIdentity = userManager.CreateIdentity(user,DefaultAuthenticationTypes.ApplicationCookie);
             authernicationManager.SignIn(new Microsoft.Owin.Security.AuthenticationProperties(),userIdentity);
         }
+
+        public ActionResult Logout()
+        {
+            //creating an authentication manager which is responsbile to login and out (like before):
+            var authenticationManager = HttpContext.GetOwinContext().Authentication;
+            authenticationManager.SignOut();
+            return RedirectToAction("index", "home");
+        }
     }
 }
