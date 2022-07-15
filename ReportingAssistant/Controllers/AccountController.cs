@@ -30,6 +30,10 @@ namespace ReportingAssistant.Controllers
             if (user != null)
             {
                 this.LoginUser(userManager, user);
+                if (userManager.IsInRole(user.Id, "Admin"))
+                {
+                    return RedirectToAction("Index", "Home", new { area = "Admin" });
+                }
                 return RedirectToAction("UserHome", "Account");
             }
             else

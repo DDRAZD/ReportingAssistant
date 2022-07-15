@@ -1,7 +1,12 @@
-﻿
+﻿@model ReportingAssistant.Identity.ApplicationUser
+
+
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
+<h2> Admin page</h2>
+@if (User.Identity.IsAuthenticated == true)
+{
+    <h3>Hello @Model.UserName</h3>
+}
