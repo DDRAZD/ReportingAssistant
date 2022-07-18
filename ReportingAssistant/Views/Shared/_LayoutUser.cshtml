@@ -29,8 +29,9 @@
 
                 @if (User.Identity.IsAuthenticated == true)
                 {
-                    <a href="/Account/Logout" class="list-group-item text-white" style="background-color:transparent" >Logout</a> 
-                    <a href="@Url.Action("UserHome","Account")" class="list-group-item text-white" style="background-color:transparent">My Profile</a> 
+                    <a href="/Account/Logout" class="list-group-item text-white" style="background-color:transparent">Logout</a>
+                    <a href="@Url.Action("UserHome","Account")" class="list-group-item text-white" style="background-color:transparent">My Profile</a>
+                    <a href="@Url.Action("Changepassword","Account")" class="list-group-item text-white" style="background-color:transparent">Change Password</a>
 
                 }
                 else

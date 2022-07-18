@@ -112,5 +112,23 @@ namespace ReportingAssistant.Controllers
             authenticationManager.SignOut();
             return RedirectToAction("index", "home");
         }
+
+        public ActionResult ChangePassword()
+        {
+            
+            return View();
+        }
+        [HttpPost]
+        public ActionResult ChangePassword(RegisterViewModel rvm)
+        {
+            var appDbContext = new ApplicationDbContext();
+            var userStore = new ApplicationUserStore(appDbContext);
+            var userManager = new ApplicationUserManager(userStore);
+            ApplicationUser appUser = userManager.FindById(User.Identity.GetUserId());
+            var passwordHash = Crypto.HashPassword(rvm.Password);
+            appUser.PasswordHash = passwordHash;
+            userManager.Update(appUser);
+            return RedirectToAction("UserHome", "Account");
+        }
     }
 }
