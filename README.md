@@ -66,6 +66,19 @@ Enable-Migrations -ContextTypeName ReportingAssistant.Identity.ApplicationDbCont
 
 
 
+ Protecting pages and allowing access only after authentication using IAuthenticationFilter:
+
+ Added Folder "Filters"
+
+ Addedd new class in folder "MyAuhetnicationFilter"-> Inherit from FilterAttribute and the interface IAuthenticationFilter
+ (have to be "using System.Web.Mvc.Filters")-> the filter then is placed in the controllers and will gatekeep and send to login automatically if user is not logged in (you do not have to do redirect yourself, it does it alone)
+
+ Permission testing = Authorization
+
+ add a class for CustomerAuthorization in the filter folder
+
+
+
 Assignment description:
 Requirement:
 

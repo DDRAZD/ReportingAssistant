@@ -7,6 +7,7 @@ using ReportingAssistant.ViewModels;
 using ReportingAssistant.Identity;
 using Microsoft.AspNet.Identity;
 using System.Web.Helpers;
+using ReportingAssistant.Filters;
 
 namespace ReportingAssistant.Controllers
 {
@@ -44,6 +45,8 @@ namespace ReportingAssistant.Controllers
             }
            
         }
+
+        [MyAuthenticationFilter]
         public ActionResult UserHome()
         {
             var appDbContext = new ApplicationDbContext();
@@ -104,7 +107,7 @@ namespace ReportingAssistant.Controllers
             var userIdentity = userManager.CreateIdentity(user,DefaultAuthenticationTypes.ApplicationCookie);
             authernicationManager.SignIn(new Microsoft.Owin.Security.AuthenticationProperties(),userIdentity);
         }
-
+        [MyAuthenticationFilter]
         public ActionResult Logout()
         {
             //creating an authentication manager which is responsbile to login and out (like before):
@@ -113,6 +116,7 @@ namespace ReportingAssistant.Controllers
             return RedirectToAction("index", "home");
         }
 
+        [MyAuthenticationFilter]
         public ActionResult ChangePassword()
         {
             

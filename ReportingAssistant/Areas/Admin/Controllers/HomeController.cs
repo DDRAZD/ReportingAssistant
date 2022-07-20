@@ -5,12 +5,15 @@ using System.Web;
 using System.Web.Mvc;
 using ReportingAssistant.Identity;
 using Microsoft.AspNet.Identity;
+using ReportingAssistant.Filters;
 
 namespace ReportingAssistant.Areas.Admin.Controllers
 {
     public class HomeController : Controller
     {
         // GET: Admin/Home
+        [MyAuthenticationFilter]
+        [AdminAuthroization]
         public ActionResult Index()
         {
             var appDbContext = new ApplicationDbContext();
