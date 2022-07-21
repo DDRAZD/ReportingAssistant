@@ -61,6 +61,7 @@ Enable-Migrations -ContextTypeName ReportingAssistant.Identity.ApplicationDbCont
             then
  update-database -Configuration ReportingAssistant.IdentityMigrations.Configuration
 
+ 
 
  ------------------------------------------------------
 
