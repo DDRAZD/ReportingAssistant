@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ReportingAssistant.ViewModels;
-using ReportingAssistant.Identity;
+using ReportingAssistant.Models;
 using Microsoft.AspNet.Identity;
 using System.Web.Helpers;
 using ReportingAssistant.Filters;
@@ -24,7 +24,7 @@ namespace ReportingAssistant.Controllers
         [HttpPost]
         public ActionResult Login(RegisterViewModel lvm)
         {
-            var appDbContext = new ApplicationDbContext();
+            var appDbContext = new ReportinAssistantDBContext();
             var userStore = new ApplicationUserStore(appDbContext);
             var userManager = new ApplicationUserManager(userStore);
             var user = userManager.Find(lvm.Username, lvm.Password);
@@ -49,7 +49,7 @@ namespace ReportingAssistant.Controllers
         [MyAuthenticationFilter]
         public ActionResult UserHome()
         {
-            var appDbContext = new ApplicationDbContext();
+            var appDbContext = new ReportinAssistantDBContext();
             var userStore = new ApplicationUserStore(appDbContext);
             var userManager = new ApplicationUserManager(userStore);
             ApplicationUser appUser = userManager.FindById(User.Identity.GetUserId());
@@ -69,7 +69,7 @@ namespace ReportingAssistant.Controllers
             if (ModelState.IsValid)//validation is valid of all the formats and required fields
             {
                 //register
-                var appDbContext = new ApplicationDbContext();
+                var appDbContext = new ReportinAssistantDBContext();
                 var userStore = new ApplicationUserStore(appDbContext);
                 var userManager = new ApplicationUserManager(userStore);
                 var passwordHash = Crypto.HashPassword(rvm.Password);
@@ -125,7 +125,7 @@ namespace ReportingAssistant.Controllers
         [HttpPost]
         public ActionResult ChangePassword(RegisterViewModel rvm)
         {
-            var appDbContext = new ApplicationDbContext();
+            var appDbContext = new ReportinAssistantDBContext();
             var userStore = new ApplicationUserStore(appDbContext);
             var userManager = new ApplicationUserManager(userStore);
             ApplicationUser appUser = userManager.FindById(User.Identity.GetUserId());

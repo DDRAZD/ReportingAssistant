@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using ReportingAssistant.Identity;
+using ReportingAssistant.Models;
 using ReportingAssistant.Filters;
 
 namespace ReportingAssistant.Areas.Admin.Controllers
@@ -15,7 +15,7 @@ namespace ReportingAssistant.Areas.Admin.Controllers
         [AdminAuthroization]
         public ActionResult Index()
         {
-            ApplicationDbContext db = new ApplicationDbContext();
+            ReportinAssistantDBContext db = new ReportinAssistantDBContext();
             List<ApplicationUser> existingUsers = db.Users.ToList();//pulling all user information from DB
             return View(existingUsers);
         }

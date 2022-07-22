@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.AspNet.Identity.EntityFramework;
-using ReportingAssistant.Identity;
+using ReportingAssistant.Models;
 
 
 [assembly: OwinStartup(typeof(ReportingAssistant.Startup))]
@@ -37,8 +37,9 @@ namespace ReportingAssistant
             //we need to work with the role manager and with the user manager
 
             //default role manager:
-            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>()); //this is for the table of role
-            var appDbContext = new ApplicationDbContext();//this is how to talk to the DB for identity
+            var appDbContext = new ReportinAssistantDBContext();//this is how to talk to the DB for identity
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(appDbContext)); //this is for the table of role
+            
             var appUserStore = new ApplicationUserStore(appDbContext);//this is for the table of users
 
             //creating an ability to manage roles and users:
@@ -46,14 +47,14 @@ namespace ReportingAssistant
 
 
             //create admin role
-            if (!roleManager.RoleExists("Admin"))
+            if (roleManager.RoleExists("Admin")==false)
             {
                 var role = new IdentityRole();
                 role.Name = "Admin";
                 roleManager.Create(role);
             }
 
-            if (!roleManager.RoleExists("User"))
+            if (roleManager.RoleExists("User")==false)
             {
                 var role = new IdentityRole();
                 role.Name = "User";

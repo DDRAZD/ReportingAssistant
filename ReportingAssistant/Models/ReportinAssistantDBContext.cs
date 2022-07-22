@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace ReportingAssistant.Models
 {
-    public class ReportinAssistantDBContext:DbContext
+    public class ReportinAssistantDBContext:IdentityDbContext<ApplicationUser>
     {
 
         //constructor for the DB

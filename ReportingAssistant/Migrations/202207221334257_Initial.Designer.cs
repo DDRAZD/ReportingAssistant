@@ -7,13 +7,13 @@ namespace ReportingAssistant.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class changedtaskdone : IMigrationMetadata
+    public sealed partial class Initial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(changedtaskdone));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "202207212139511_changedtaskdone"; }
+            get { return "202207221334257_Initial"; }
         }
         
         string IMigrationMetadata.Source

@@ -5,7 +5,7 @@ using System.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace ReportingAssistant.Identity
+namespace ReportingAssistant.Models
 {
     public class ApplicationUserManager : UserManager<ApplicationUser>
     {

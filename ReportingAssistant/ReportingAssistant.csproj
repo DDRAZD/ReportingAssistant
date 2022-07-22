@@ -303,28 +303,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="IdentityMigrations\202207082229506_Initial1.cs" />
-    <Compile Include="IdentityMigrations\202207082229506_Initial1.designer.cs">
-      <DependentUpon>202207082229506_Initial1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="IdentityMigrations\202207111702256_IdentityAdded.cs" />
-    <Compile Include="IdentityMigrations\202207111702256_IdentityAdded.designer.cs">
-      <DependentUpon>202207111702256_IdentityAdded.cs</DependentUpon>
-    </Compile>
-    <Compile Include="IdentityMigrations\202207121755192_UpdatedIdentifyDB.cs" />
-    <Compile Include="IdentityMigrations\202207121755192_UpdatedIdentifyDB.designer.cs">
-      <DependentUpon>202207121755192_UpdatedIdentifyDB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="IdentityMigrations\Configuration.cs" />
-    <Compile Include="Identity\ApplicationDbContext.cs" />
-    <Compile Include="Identity\ApplicationUser.cs" />
-    <Compile Include="Identity\ApplicationUserManager.cs" />
-    <Compile Include="Identity\ApplicationUserStore.cs" />
-    <Compile Include="Migrations\202207212139511_changedtaskdone.cs" />
-    <Compile Include="Migrations\202207212139511_changedtaskdone.designer.cs">
-      <DependentUpon>202207212139511_changedtaskdone.cs</DependentUpon>
+    <Compile Include="Migrations\202207221334257_Initial.cs" />
+    <Compile Include="Migrations\202207221334257_Initial.designer.cs">
+      <DependentUpon>202207221334257_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\ApplicationUserManager.cs" />
+    <Compile Include="Models\ApplicationUserStore.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\FinalComment.cs" />
     <Compile Include="Models\Project.cs" />
@@ -396,17 +382,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="IdentityMigrations\202207082229506_Initial1.resx">
-      <DependentUpon>202207082229506_Initial1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="IdentityMigrations\202207111702256_IdentityAdded.resx">
-      <DependentUpon>202207111702256_IdentityAdded.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="IdentityMigrations\202207121755192_UpdatedIdentifyDB.resx">
-      <DependentUpon>202207121755192_UpdatedIdentifyDB.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202207212139511_changedtaskdone.resx">
-      <DependentUpon>202207212139511_changedtaskdone.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202207221334257_Initial.resx">
+      <DependentUpon>202207221334257_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

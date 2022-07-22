@@ -29,7 +29,9 @@ namespace ReportingAssistant.Models
 
         [Display(Name ="Category ID")]
         [Required(ErrorMessage ="You must choose a category")]
+        [ForeignKey("Categories")]
         public long CategoryID { get; set; }
+        public virtual Category Categories { get; set; }
 
         public string Photo { get; set; }
     }

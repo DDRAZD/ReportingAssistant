@@ -53,13 +53,16 @@ app.UseCookieAuthentication(new CookieAuthenticationOptions() { AuthenticationTy
 
 
 -- afterwards,
+I added all the tables for regular DB, and created DB context class that inhertied from IdentityDbContext<ApplicationUser>
 
-Enable-Migrations -ContextTypeName ReportingAssistant.Identity.ApplicationDbContext -MigrationsDirectory IdentityMigrations
+then added the DbSet for the non identity tables - all in the teh same DBcontext class
+
+Enable-Migrations -ContextTypeName ReportingAssistant.Models.ReportinAssistantDBContext -MigrationsDirectory Migrations
              
              
- Add-Migration -Configuration ReportingAssistant.IdentityMigrations.Configuration Initial(this is an arbitrary name)
+ Add-Migration -Configuration ReportingAssistant.Migrations.Configuration Initial(this is an arbitrary name)
             then
- update-database -Configuration ReportingAssistant.IdentityMigrations.Configuration
+ update-database -Configuration ReportingAssistant.Migrations.Configuration
 
  
 

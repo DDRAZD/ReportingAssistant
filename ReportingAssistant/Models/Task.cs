@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ReportingAssistant.Models
 {
+    [Table("Tasks", Schema = "nameofschema")]
     public class Task
     {
         [Key]
@@ -22,18 +24,24 @@ namespace ReportingAssistant.Models
         [MinLength(2, ErrorMessage = "no less than 2 characters")]
         public string Description { get; set; }
 
-        [Required(ErrorMessage ="you must specify an admin")]
-        public long AdminUserID { get; set; }
+       
+     
+        [ForeignKey("AdminUsers")]
+        public string AdminUserId { get; set; }
+        public virtual ApplicationUser AdminUsers { get; set; }
+       
+        [ForeignKey("Users")]
+        public string UserID { get; set; }
 
-        [Required(ErrorMessage = "you must specify a user")]
-        public long UserID { get; set; }
-
-        [Required(ErrorMessage ="must specfic task date")]
+        public virtual ApplicationUser Users { get; set; }
         public DateTime DateOfTask { get; set; }
 
         public string Attachment { get; set; }
 
         [Required(ErrorMessage ="Task's project ID cannot be null")]
+
+        [ForeignKey("Projects")]
         public long ProjectID { get; set; }
+        public virtual Project Projects { get; set; }
     }
 }
