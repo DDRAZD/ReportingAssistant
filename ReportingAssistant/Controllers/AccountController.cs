@@ -64,6 +64,7 @@ namespace ReportingAssistant.Controllers
 
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterViewModel rvm)
         {
             if (ModelState.IsValid)//validation is valid of all the formats and required fields
