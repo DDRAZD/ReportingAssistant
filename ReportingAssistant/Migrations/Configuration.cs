@@ -4,8 +4,9 @@
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using ReportingAssistant.DataLayer;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<ReportingAssistant.Models.ReportinAssistantDBContext>
+    public sealed class Configuration : DbMigrationsConfiguration<ReportingAssistant.DataLayer.ReportinAssistantDBContext>
     {
         public Configuration()
         {
@@ -13,7 +14,7 @@
             MigrationsDirectory = @"Migrations";
         }
 
-        protected override void Seed(ReportingAssistant.Models.ReportinAssistantDBContext context)
+        protected override void Seed(ReportinAssistantDBContext context)
         {
             //  This method will be called after migrating to the latest version.
 

@@ -4,8 +4,9 @@ using System.Linq;
 using System.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using ReportingAssistant.DomainModels;
 
-namespace ReportingAssistant.Models
+namespace ReportingAssistant.DataLayer
 {
     public class ApplicationUserStore : UserStore<ApplicationUser>
     {

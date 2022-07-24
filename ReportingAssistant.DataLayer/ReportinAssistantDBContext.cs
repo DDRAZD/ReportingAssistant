@@ -1,20 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
+//using System.Threading.Tasks;
 using System.Data.Entity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using ReportingAssistant.DomainModels;
 
-namespace ReportingAssistant.Models
+namespace ReportingAssistant.DataLayer
 {
-    public class ReportinAssistantDBContext:IdentityDbContext<ApplicationUser>
+    public class ReportinAssistantDBContext : IdentityDbContext<ApplicationUser>
     {
 
         //constructor for the DB
 
-        public ReportinAssistantDBContext():base("MyConnectionString")
+        public ReportinAssistantDBContext() : base("MyConnectionString")
         {
-            
+
         }
         public DbSet<Project> Projects { get; set; }
         public DbSet<Category> Categories { get; set; }

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
-using ReportingAssistant.Models;
+
 using System.ComponentModel.DataAnnotations.Schema;
 
 
-namespace ReportingAssistant.Models
+namespace ReportingAssistant.DomainModels
 {
     [Table("Final Comments", Schema = "nameofschema")]
     public class FinalComment

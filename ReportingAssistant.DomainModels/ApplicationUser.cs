@@ -7,7 +7,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System.ComponentModel.DataAnnotations.Schema;
 
 
-namespace ReportingAssistant.Models
+namespace ReportingAssistant.DomainModels
 {
    
     public class ApplicationUser : IdentityUser

@@ -82,6 +82,36 @@ Enable-Migrations -ContextTypeName ReportingAssistant.Models.ReportinAssistantDB
  add a class for CustomerAuthorization in the filter folder
 
 
+ structured with data layer, service layer and presentation layer
+
+ add project for data layer and move dbcontext class to it
+
+ Install-package EntityFramework in that new project
+ in the new project (the data layer) add referrence to the main project
+
+ 
+
+ chanage the class in configuration in migrations folder to "public" so the data layer can access it
+
+
+ add a project for domain models
+
+ add reference to the data layer project
+
+ move the models into it
+
+ because it includes the access to the database identity, repeat the instalation of:
+ Install-Package Microsoft.AspNet.Identity.EntityFramework -Version 2.2.3
+
+Install-Package Microsoft.AspNet.Identity.Owin
+
+Install-Package Microsoft.Owin.Host.SystemWeb
+
+ install-package EntityFramwork for this project as well
+
+ The key was to put the user identiy in models while the user store and user manager in data layer - avoided circular reference between those two layers
+
+
 
 Assignment description:
 Requirement:

@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 
-namespace ReportingAssistant.Models
+namespace ReportingAssistant.DomainModels
 {
     [Table("Projects", Schema="nameofschema")]
     public class Project

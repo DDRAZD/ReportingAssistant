@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.AspNet.Identity.EntityFramework;
-using ReportingAssistant.Models;
+using ReportingAssistant.DomainModels;
+using ReportingAssistant.DataLayer;
 
 
 [assembly: OwinStartup(typeof(ReportingAssistant.Startup))]

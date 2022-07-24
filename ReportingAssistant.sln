@@ -10,6 +10,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportingAssistant.DataLayer", "ReportingAssistant.DataLayer\ReportingAssistant.DataLayer.csproj", "{4D66E565-B9A8-4779-AE7D-355D04AEBB79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportingAssistant.DomainModels", "ReportingAssistant.DomainModels\ReportingAssistant.DomainModels.csproj", "{334C94A7-6FA2-41BE-B720-0670463D7248}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +24,14 @@ Global
 		{1148EC9D-8B12-4857-9A1D-A69F7475281E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1148EC9D-8B12-4857-9A1D-A69F7475281E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1148EC9D-8B12-4857-9A1D-A69F7475281E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D66E565-B9A8-4779-AE7D-355D04AEBB79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D66E565-B9A8-4779-AE7D-355D04AEBB79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D66E565-B9A8-4779-AE7D-355D04AEBB79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D66E565-B9A8-4779-AE7D-355D04AEBB79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{334C94A7-6FA2-41BE-B720-0670463D7248}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{334C94A7-6FA2-41BE-B720-0670463D7248}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{334C94A7-6FA2-41BE-B720-0670463D7248}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{334C94A7-6FA2-41BE-B720-0670463D7248}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
