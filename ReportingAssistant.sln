@@ -14,6 +14,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportingAssistant.DataLaye
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportingAssistant.DomainModels", "ReportingAssistant.DomainModels\ReportingAssistant.DomainModels.csproj", "{334C94A7-6FA2-41BE-B720-0670463D7248}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportingAssistant.ServiceLayer", "ReportingAssistant.ServiceLayer\ReportingAssistant.ServiceLayer.csproj", "{B5B9DBEB-6C19-4870-827D-F2239B64565F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportingAssistant.ServiceContracts", "ReportingAssistant.ServiceContracts\ReportingAssistant.ServiceContracts.csproj", "{01B50DA1-C08B-4A33-878B-7FD6B23A2221}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +36,14 @@ Global
 		{334C94A7-6FA2-41BE-B720-0670463D7248}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{334C94A7-6FA2-41BE-B720-0670463D7248}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{334C94A7-6FA2-41BE-B720-0670463D7248}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5B9DBEB-6C19-4870-827D-F2239B64565F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5B9DBEB-6C19-4870-827D-F2239B64565F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5B9DBEB-6C19-4870-827D-F2239B64565F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5B9DBEB-6C19-4870-827D-F2239B64565F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01B50DA1-C08B-4A33-878B-7FD6B23A2221}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01B50DA1-C08B-4A33-878B-7FD6B23A2221}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01B50DA1-C08B-4A33-878B-7FD6B23A2221}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01B50DA1-C08B-4A33-878B-7FD6B23A2221}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

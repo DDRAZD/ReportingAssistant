@@ -112,6 +112,8 @@ Install-Package Microsoft.Owin.Host.SystemWeb
  The key was to put the user identiy in models while the user store and user manager in data layer - avoided circular reference between those two layers
 
 
+ for every layer, added a contract layer so to decouple = so service layer has a serviceContract layer to hide it. Same later for repository
+
 
 Assignment description:
 Requirement:
