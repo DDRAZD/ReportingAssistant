@@ -3,13 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ReportingAssistant.ServiceContracts;
 using ReportingAssistant.DomainModels;
+using ReportingAssistant.RepositoryContracts;
+using ReportingAssistant.DataLayer;
 
-namespace ReportingAssistant.ServiceLayer
+namespace ReportingAssistant.RepositoryLayer
 {
-    public class Services : IServices
+    public class Repository : IRepository
     {
+        ReportinAssistantDBContext dbContext;
+
+        public Repository()
+        {
+           this.dbContext = new ReportinAssistantDBContext();   
+        }
+
         public void CreateProject()
         {
             throw new NotImplementedException();

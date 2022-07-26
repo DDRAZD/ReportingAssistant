@@ -5,9 +5,9 @@ using System.Text;
 //using System.Threading.Tasks;
 using ReportingAssistant.DomainModels;
 
-namespace ReportingAssistant.ServiceContracts
+namespace ReportingAssistant.RepositoryContracts
 {
-    public interface IServices
+    public interface IRepository
     {
         List<Task> GetTasks(string UserID);
         List<TaskDone> GetTasksDone(string UserID);
@@ -23,9 +23,5 @@ namespace ReportingAssistant.ServiceContracts
 
         void CreateProject();
 
-
-        
-
-        
     }
 }

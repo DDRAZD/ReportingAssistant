@@ -18,6 +18,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportingAssistant.ServiceL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportingAssistant.ServiceContracts", "ReportingAssistant.ServiceContracts\ReportingAssistant.ServiceContracts.csproj", "{01B50DA1-C08B-4A33-878B-7FD6B23A2221}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportingAssistant.RepositoryLayer", "ReportingAssistant.RepositoryLayer\ReportingAssistant.RepositoryLayer.csproj", "{DAB1CAC2-AE19-4A64-94F4-9554A5A0C3F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportingAssistant.RepositoryContracts", "ReportingAssistant.RepositoryContracts\ReportingAssistant.RepositoryContracts.csproj", "{9C9FC869-F208-4765-ADF8-4A021AA0E13A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +48,14 @@ Global
 		{01B50DA1-C08B-4A33-878B-7FD6B23A2221}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01B50DA1-C08B-4A33-878B-7FD6B23A2221}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01B50DA1-C08B-4A33-878B-7FD6B23A2221}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAB1CAC2-AE19-4A64-94F4-9554A5A0C3F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAB1CAC2-AE19-4A64-94F4-9554A5A0C3F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAB1CAC2-AE19-4A64-94F4-9554A5A0C3F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAB1CAC2-AE19-4A64-94F4-9554A5A0C3F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C9FC869-F208-4765-ADF8-4A021AA0E13A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C9FC869-F208-4765-ADF8-4A021AA0E13A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C9FC869-F208-4765-ADF8-4A021AA0E13A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C9FC869-F208-4765-ADF8-4A021AA0E13A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

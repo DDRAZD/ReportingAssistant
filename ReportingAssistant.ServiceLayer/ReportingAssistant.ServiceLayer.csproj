@@ -44,5 +44,15 @@
     <Compile Include="Services.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ReportingAssistant.DomainModels\ReportingAssistant.DomainModels.csproj">
+      <Project>{334c94a7-6fa2-41be-b720-0670463d7248}</Project>
+      <Name>ReportingAssistant.DomainModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ReportingAssistant.ServiceContracts\ReportingAssistant.ServiceContracts.csproj">
+      <Project>{01b50da1-c08b-4a33-878b-7fd6b23a2221}</Project>
+      <Name>ReportingAssistant.ServiceContracts</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

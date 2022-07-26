@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{01B50DA1-C08B-4A33-878B-7FD6B23A2221}</ProjectGuid>
+    <ProjectGuid>{DAB1CAC2-AE19-4A64-94F4-9554A5A0C3F0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ReportingAssistant.ServiceContracts</RootNamespace>
-    <AssemblyName>ReportingAssistant.ServiceContracts</AssemblyName>
+    <RootNamespace>ReportingAssistant.RepositoryLayer</RootNamespace>
+    <AssemblyName>ReportingAssistant.RepositoryLayer</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,13 +41,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IServices.cs" />
+    <Compile Include="Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ReportingAssistant.DataLayer\ReportingAssistant.DataLayer.csproj">
+      <Project>{4d66e565-b9a8-4779-ae7d-355d04aebb79}</Project>
+      <Name>ReportingAssistant.DataLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ReportingAssistant.DomainModels\ReportingAssistant.DomainModels.csproj">
       <Project>{334c94a7-6fa2-41be-b720-0670463d7248}</Project>
       <Name>ReportingAssistant.DomainModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ReportingAssistant.RepositoryContracts\ReportingAssistant.RepositoryContracts.csproj">
+      <Project>{9c9fc869-f208-4765-adf8-4a021aa0e13a}</Project>
+      <Name>ReportingAssistant.RepositoryContracts</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

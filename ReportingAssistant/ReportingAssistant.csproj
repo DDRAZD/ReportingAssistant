@@ -298,6 +298,7 @@
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TasksController.cs" />
     <Compile Include="Filters\AdminAuthroization.cs" />
     <Compile Include="Filters\MyAuthenticationFilter.cs" />
     <Compile Include="Global.asax.cs">
@@ -365,6 +366,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Views\Tasks\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
@@ -385,6 +387,18 @@
     <ProjectReference Include="..\ReportingAssistant.DomainModels\ReportingAssistant.DomainModels.csproj">
       <Project>{334c94a7-6fa2-41be-b720-0670463d7248}</Project>
       <Name>ReportingAssistant.DomainModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ReportingAssistant.RepositoryLayer\ReportingAssistant.RepositoryLayer.csproj">
+      <Project>{dab1cac2-ae19-4a64-94f4-9554a5a0c3f0}</Project>
+      <Name>ReportingAssistant.RepositoryLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ReportingAssistant.ServiceContracts\ReportingAssistant.ServiceContracts.csproj">
+      <Project>{01b50da1-c08b-4a33-878b-7fd6b23a2221}</Project>
+      <Name>ReportingAssistant.ServiceContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ReportingAssistant.ServiceLayer\ReportingAssistant.ServiceLayer.csproj">
+      <Project>{b5b9dbeb-6c19-4870-827d-f2239b64565f}</Project>
+      <Name>ReportingAssistant.ServiceLayer</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
