@@ -24,5 +24,7 @@ namespace ReportingAssistant.Controllers
         {
             return View();
         }
+
+        
     }
 }

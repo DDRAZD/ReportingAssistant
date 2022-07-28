@@ -2,22 +2,42 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+//using System.Threading.Tasks;
 using ReportingAssistant.ServiceContracts;
 using ReportingAssistant.DomainModels;
+using ReportingAssistant.RepositoryLayer;
+using ReportingAssistant.RepositoryContracts;
+
 
 namespace ReportingAssistant.ServiceLayer
 {
     public class Services : IServices
     {
-        public void CreateProject()
+        IRepository repository;
+
+        public Services()
         {
-            throw new NotImplementedException();
+            repository = new Repository();
+        }
+        
+        public List<Category> GetCategories()
+        {
+          return  repository.GetCategories();
         }
 
-        public void CreateTask(string UserID, Project project)
+        public void CreateCategory(string categoryName)
         {
-            throw new NotImplementedException();
+            repository.CreateCategory(categoryName);
+        }
+
+        public void CreateProject(Project project)
+        {
+            this.repository.CreateProject(project);
+        }
+
+        public void CreateTask(Task task)
+        {
+            repository.CreateTask(task);
         }
 
         public void EditFinalComments(FinalComment finalComment)

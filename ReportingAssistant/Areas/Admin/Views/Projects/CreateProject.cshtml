@@ -1,0 +1,65 @@
+﻿@model ReportingAssistant.DomainModels.Project
+@using ReportingAssistant.HtmlHelpers
+
+@{
+    ViewBag.Title = "CreateProject";
+}
+
+<h2>CreateProject</h2>
+
+@using (Html.BeginForm("CreateProject", "Projects",
+    new { area = "Admin" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <!--first row-->
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            @Html.LabelFor(item => item.ProjectName)
+            @Html.TextBoxFor(temp => temp.ProjectName, new { placeholder = "Project Name", @class = "form-control" })
+            @Html.ValidationMessageFor(temp => temp.ProjectName)
+        </div>
+        <div class="form-group col-md-6">
+            @Html.LabelFor(item => item.DateOfStart)
+            @Html.TextBoxFor(item => item.DateOfStart, new { type = "date", placeholder = "Date of Start", @class = "form-control" })
+            @Html.ValidationMessageFor(temp => temp.DateOfStart)
+
+        </div>
+    </div>
+    <!--second row-->
+    <div class="form-row">
+
+
+        <div class="form-group col-md-6">
+            @Html.LabelFor(item => item.AvailablityStatus, new { @class = "form-check-label" })
+            <div class="form-check">
+                @Html.RadioButtonFor(temp => temp.AvailablityStatus, "Not Available", new { id = "NotAvailable", @class = "form-check-input" })
+                <labal class="form-check-label" for="NotAvailable">Not Avaialble</labal>
+            </div>
+            <div class="form-check">
+                @Html.RadioButtonFor(temp => temp.AvailablityStatus, "Available", new { id = "Available", @class = "form-check-input" })
+                <labal class="form-check-label" for="Available">Available</labal>
+            </div>
+            @Html.ValidationMessageFor(temp => temp.AvailablityStatus)
+        </div>
+    </div>
+    <!--third row-->
+    <div class="form-row">
+
+        <div class="form-group col-md-6">
+            @Html.LabelFor(item => item.CategoryID)
+            @Html.DropDownListFor(item => item.CategoryID, new SelectList(
+        (List<ReportingAssistant.DomainModels.Category>)ViewData["Categories"],
+        "CategoryID", "CategoryName"), "Please Select", new { @class = "form-control" })
+            @Html.ValidationMessageFor(temp => temp.CategoryID)
+
+            <div class="form-group col-md-6">
+                <label for="Image">Image</label>
+                @Html.Photo("form-control-file")
+            </div>
+        </div>
+    </div>
+
+    @Html.ValidationSummary()
+    <button type="submit" class="btn btn-success">Submit</button>
+
+    <a class="btn btn-danger" href="@Url.Action("Index","Projects", new {Area="Admin"})">Cancel</a>
+}

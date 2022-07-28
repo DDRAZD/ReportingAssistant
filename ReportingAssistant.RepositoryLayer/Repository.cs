@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+//using System.Threading.Tasks;
 using ReportingAssistant.DomainModels;
 using ReportingAssistant.RepositoryContracts;
 using ReportingAssistant.DataLayer;
@@ -18,16 +18,30 @@ namespace ReportingAssistant.RepositoryLayer
            this.dbContext = new ReportinAssistantDBContext();   
         }
 
-        public void CreateProject()
+        public void CreateProject(Project project )
         {
-            throw new NotImplementedException();
+            dbContext.Projects.Add( project );
+            dbContext.SaveChanges();
         }
 
-        public void CreateTask(string UserID, Project project)
+        public void CreateTask(Task task)
         {
-            throw new NotImplementedException();
+            dbContext.Tasks.Add(task);
+            dbContext.SaveChanges();
         }
 
+        public void CreateCategory(string categoryName)
+        {
+            Category category = new Category();
+            category.CategoryName=categoryName;
+            dbContext.Categories.Add(category);
+            dbContext.SaveChanges ();
+        }
+
+        public List<Category> GetCategories()
+        {
+            return dbContext.Categories.ToList();
+        }
         public void EditFinalComments(FinalComment finalComment)
         {
             throw new NotImplementedException();

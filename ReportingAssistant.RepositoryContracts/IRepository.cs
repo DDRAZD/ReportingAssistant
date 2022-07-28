@@ -12,8 +12,11 @@ namespace ReportingAssistant.RepositoryContracts
         List<Task> GetTasks(string UserID);
         List<TaskDone> GetTasksDone(string UserID);
         List<FinalComment> GetFinalComments(string UserID);
+        List<Category> GetCategories();
 
-        void CreateTask(string UserID, Project project);
+        void CreateTask(Task task);
+
+        void CreateCategory(string categoryName);
 
         void EditTask(Task task);
 
@@ -21,7 +24,7 @@ namespace ReportingAssistant.RepositoryContracts
 
         void EditFinalComments(FinalComment finalComment);
 
-        void CreateProject();
+        void CreateProject(Project project);
 
     }
 }

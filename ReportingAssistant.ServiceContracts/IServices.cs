@@ -10,10 +10,11 @@ namespace ReportingAssistant.ServiceContracts
     public interface IServices
     {
         List<Task> GetTasks(string UserID);
+        List<Category> GetCategories();
         List<TaskDone> GetTasksDone(string UserID);
         List<FinalComment> GetFinalComments(string UserID);
 
-        void CreateTask(string UserID, Project project);
+        void CreateTask(Task task);
 
         void EditTask(Task task);
 
@@ -21,7 +22,9 @@ namespace ReportingAssistant.ServiceContracts
 
         void EditFinalComments(FinalComment finalComment);
 
-        void CreateProject();
+        void CreateProject(Project project);
+
+        void CreateCategory(string categoryName);   
 
 
         

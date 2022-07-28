@@ -1,0 +1,24 @@
+﻿
+@model ReportingAssistant.DomainModels.Category
+
+@{
+    ViewBag.Title = "CreateCategory";
+}
+
+<h2>CreateCategory</h2>
+
+@using (Html.BeginForm("CreateCategory", "Projects", new { area = "Admin" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <!--first row-->
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            @Html.LabelFor(item => item.CategoryName)
+            @Html.TextBoxFor(temp => temp.CategoryName, new { placeholder = "Category Name", @class = "form-control" })
+            @Html.ValidationMessageFor(temp => temp.CategoryName)
+        </div>
+    </div>
+    @Html.ValidationSummary()
+    <button type="submit" class="btn btn-success">Submit</button>
+
+    <a class="btn btn-danger" href="@Url.Action("Index","Projects", new {Area="Admin"})">Cancel</a>
+}
