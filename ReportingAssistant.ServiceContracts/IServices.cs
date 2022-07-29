@@ -14,6 +14,10 @@ namespace ReportingAssistant.ServiceContracts
         List<TaskDone> GetTasksDone(string UserID);
         List<FinalComment> GetFinalComments(string UserID);
 
+        List<Project> GetProjects();
+
+        List<ApplicationUser> GetUsers();
+
         void CreateTask(Task task);
 
         void EditTask(Task task);

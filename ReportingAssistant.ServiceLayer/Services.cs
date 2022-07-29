@@ -25,6 +25,16 @@ namespace ReportingAssistant.ServiceLayer
           return  repository.GetCategories();
         }
 
+
+       public  List<Project> GetProjects()
+        {
+            return repository.GetProjects();
+        }
+
+        public List<ApplicationUser> GetUsers()
+        {
+            return repository.GetUsers();
+        }
         public void CreateCategory(string categoryName)
         {
             repository.CreateCategory(categoryName);

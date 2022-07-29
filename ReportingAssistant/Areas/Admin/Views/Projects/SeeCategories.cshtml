@@ -1,0 +1,26 @@
+﻿@model List<ReportingAssistant.DomainModels.Category>
+
+@{
+    ViewBag.Title = "Categories";
+}
+
+<h2>Categories</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Category Name</th>
+        
+    </tr>
+    @foreach (var category in Model)
+    {
+        <tr>
+            <td>@category.CategoryName</td>
+            
+
+        </tr>
+    }
+
+    </table>
+
+<a href="@Url.Action("CreateCategory","Projects", new {area="Admin"})" >Create Category</a>
+

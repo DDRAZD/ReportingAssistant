@@ -1,0 +1,32 @@
+﻿@model List<ReportingAssistant.DomainModels.Project>
+
+@{
+    ViewBag.Title = "Projects";
+}
+
+<h2>Projects</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Project Name</th>
+        <th>Category</th>
+        <th>Availablity Status</th>
+        <th>Date of Start</th>
+        <th>Photo</th>
+    </tr>
+    @foreach (var project in Model)
+    {
+        <tr>
+            <td>@project.ProjectName</td>
+            <td>@project.Categories.CategoryName.ToString()</td>
+            <td>@project.AvailablityStatus</td>
+            <td>@project.DateOfStart</td>
+            <td><img class="card-img-top" src="data:image;base64,@project.Photo" alt="Card image cap" /></td>
+
+        </tr>
+    }
+
+
+
+</table>
+<a href="@Url.Action("CreateProject","Projects", new {area="Admin"})">Create Project</a>

@@ -14,6 +14,10 @@ namespace ReportingAssistant.RepositoryContracts
         List<FinalComment> GetFinalComments(string UserID);
         List<Category> GetCategories();
 
+        List<Project> GetProjects();
+
+        List<ApplicationUser> GetUsers();
+
         void CreateTask(Task task);
 
         void CreateCategory(string categoryName);

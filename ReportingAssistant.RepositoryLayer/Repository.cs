@@ -42,6 +42,16 @@ namespace ReportingAssistant.RepositoryLayer
         {
             return dbContext.Categories.ToList();
         }
+
+       public  List<Project> GetProjects()
+        {
+            return dbContext.Projects.ToList();
+        }
+
+       public  List<ApplicationUser> GetUsers()
+        {
+            return dbContext.Users.ToList();
+        }
         public void EditFinalComments(FinalComment finalComment)
         {
             throw new NotImplementedException();
