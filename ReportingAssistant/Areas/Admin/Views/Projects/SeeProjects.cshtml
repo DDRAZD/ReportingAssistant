@@ -8,20 +8,132 @@
 
 <table class="table table-bordered">
     <tr>
-        <th>Project Name</th>
-        <th>Category</th>
-        <th>Availablity Status</th>
-        <th>Date of Start</th>
-        <th>Photo</th>
+        <th style="width:25%">Photo</th>
+        <th style="width:15%">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+
+
+                <a href="@Url.Action("SeeProjects", "Projects", new {Area="Admin", SortColumn = "ProjectID", IconClass="fa-sort-asc", PageNo=1})">Project ID</a>
+                if (ViewBag.SortColumn == "ProjectID")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+            else
+            {
+                <a href="@Url.Action("SeeProjects", "Projects", new {Area="Admin", SortColumn = "ProjectID", IconClass="fa-sort-desc", PageNo=1})">Project ID</a>
+
+                if (ViewBag.SortColumn == "ProjectID")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+
+        </th>
+        <th style="width:15%">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+
+
+                <a href="@Url.Action("SeeProjects", "Projects", new {Area="Admin", SortColumn = "ProjectName", IconClass="fa-sort-asc", PageNo=1})">Project Name</a>
+                if (ViewBag.SortColumn == "ProjectName")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+            else
+            {
+                <a href="@Url.Action("SeeProjects", "Projects", new {Area="Admin", SortColumn = "ProjectName", IconClass="fa-sort-desc", PageNo=1})">Project Name</a>
+
+                if (ViewBag.SortColumn == "ProjectName")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+
+        </th>
+        <th style="width:15%">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+
+
+                <a href="@Url.Action("SeeProjects", "Projects", new {Area="Admin", SortColumn = "CategoryID", IconClass="fa-sort-asc", PageNo=1})">Category</a>
+                if (ViewBag.SortColumn == "CategoryID")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+            else
+            {
+                <a href="@Url.Action("SeeProjects", "Projects", new {Area="Admin", SortColumn = "CategoryID", IconClass="fa-sort-desc", PageNo=1})">Category</a>
+
+                if (ViewBag.SortColumn == "CategoryID")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+
+        </th>
+        <th style="width:15%">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+
+
+                <a href="@Url.Action("SeeProjects", "Projects", new {Area="Admin", SortColumn = "AvailabilityStatus", IconClass="fa-sort-asc", PageNo=1})">Availability Status</a>
+                if (ViewBag.SortColumn == "AvailabilityStatus")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+            else
+            {
+                <a href="@Url.Action("SeeProjects", "Projects", new {Area="Admin", SortColumn = "AvailabilityStatus", IconClass="fa-sort-desc", PageNo=1})">AvailabilityStatus</a>
+
+                if (ViewBag.SortColumn == "AvailabilityStatus")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+
+        </th>
+
+        <th style="width:15%">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+
+
+                <a href="@Url.Action("SeeProjects", "Projects", new {Area="Admin", SortColumn = "DateOfStart", IconClass="fa-sort-asc", PageNo=1})">Start Date</a>
+                if (ViewBag.SortColumn == "DateOfStart")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+            else
+            {
+                <a href="@Url.Action("SeeProjects", "Projects", new {Area="Admin", SortColumn = "DateOfStart", IconClass="fa-sort-desc", PageNo=1})">Start Date</a>
+
+                if (ViewBag.SortColumn == "DateOfStart")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+
+        </th>
+
+        
+
     </tr>
     @foreach (var project in Model)
     {
         <tr>
-            <td>@project.ProjectName</td>
-            <td>@project.Categories.CategoryName.ToString()</td>
-            <td>@project.AvailablityStatus</td>
-            <td>@project.DateOfStart</td>
             <td><img class="card-img-top" src="data:image;base64,@project.Photo" alt="Card image cap" /></td>
+            <td>@Html.DisplayFor(item=>project.ProjectID)</td>
+            <td>@Html.DisplayFor(item=>project.ProjectName)</td>
+            <td>@Html.DisplayFor(item => project.Categories.CategoryName)</td>
+            <td>@Html.DisplayFor(item => project.AvailablityStatus)</td>
+            <td>@Html.DisplayFor(item => project.DateOfStart)</td>
+            
 
         </tr>
     }

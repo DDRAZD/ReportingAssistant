@@ -71,9 +71,63 @@ namespace ReportingAssistant.Areas.Admin.Controllers
         }
         [MyAuthenticationFilter]
         [AdminAuthroization]
-        public ActionResult SeeProjects()
+        public ActionResult SeeProjects(string SortColumn = "ProjectName", string IconClass = "fa-sort-asc", int PageNo = 1)
         {
             List<Project> projects = services.GetProjects();
+            ViewBag.SortColumn = SortColumn;
+            ViewBag.IconClass = IconClass;
+
+            //sorting is done at the controller level, before sent to the view
+
+            if (SortColumn == "ProjectID")
+            {
+                if (IconClass == "fa-sort-asc")
+                    projects = projects.OrderBy(temp => temp.ProjectID).ToList();
+                else
+                    projects = projects.OrderByDescending(temp => temp.ProjectID).ToList();
+            }
+            else if (SortColumn == "ProjectName")
+            {
+                if (IconClass == "fa-sort-asc")
+                    projects = projects.OrderBy(temp => temp.ProjectName).ToList();
+                else
+                    projects = projects.OrderByDescending(temp => temp.ProjectName).ToList();
+            }
+            
+            else if (SortColumn == "AvailabilityStatus")
+            {
+                if (IconClass == "fa-sort-asc")
+                    projects = projects.OrderBy(temp => temp.AvailablityStatus).ToList();
+                else
+                    projects = projects.OrderByDescending(temp => temp.AvailablityStatus).ToList();
+            }
+            
+            else if (SortColumn == "CategoryID")
+            {
+                if (IconClass == "fa-sort-asc")
+                    projects = projects.OrderBy(temp => temp.CategoryID).ToList();
+                else
+                    projects = projects.OrderByDescending(temp => temp.CategoryID).ToList();
+            }
+            else if (SortColumn == "DateOfStart")
+            {
+                if (IconClass == "fa-sort-asc")
+                    projects = projects.OrderBy(temp => temp.DateOfStart).ToList();
+                else
+                    projects = projects.OrderByDescending(temp => temp.DateOfStart).ToList();
+            }
+            
+
+            //paging - limiting the number of records per page displayed to the user
+            int NoOfRecordsPerPage = 5;
+            int NoOfPages = 
+                Convert.ToInt32(Math.Ceiling(Convert.ToDouble(projects.Count) / Convert.ToDouble(NoOfRecordsPerPage))); //rounding up
+            int NoOfRecordsToSkip = (PageNo - 1) * NoOfRecordsPerPage;
+            ViewBag.PageNo = PageNo;
+            ViewBag.NoOfPages = NoOfPages;
+            projects = projects.Skip(NoOfRecordsToSkip).Take(NoOfRecordsPerPage).ToList();
+
+
             return View(projects);
         }
         [MyAuthenticationFilter]
