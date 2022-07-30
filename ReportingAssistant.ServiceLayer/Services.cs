@@ -35,6 +35,10 @@ namespace ReportingAssistant.ServiceLayer
         {
             return repository.GetUsers();
         }
+       public string GetUserID(string UserName)
+        {
+            return repository.GetUserID(UserName);
+        }
         public void CreateCategory(string categoryName)
         {
             repository.CreateCategory(categoryName);

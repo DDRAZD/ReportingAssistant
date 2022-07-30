@@ -17,6 +17,7 @@ namespace ReportingAssistant.ServiceContracts
         List<Project> GetProjects();
 
         List<ApplicationUser> GetUsers();
+        string GetUserID(string UserName);
 
         void CreateTask(Task task);
 

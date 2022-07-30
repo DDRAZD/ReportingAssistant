@@ -9,6 +9,7 @@ using ReportingAssistant.ServiceLayer;
 using ReportingAssistant.Filters;
 
 
+
 namespace ReportingAssistant.Areas.Admin.Controllers
 {
     public class ProjectsController : Controller
@@ -138,5 +139,23 @@ namespace ReportingAssistant.Areas.Admin.Controllers
             return View(categories);
            
         }
+
+        public ActionResult CreateTask()
+        {
+            ViewData["Projects"] = services.GetProjects().ToList();
+            ViewData["Users"] = services.GetUsers().ToList();
+           
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult CreateTask(Task task)
+        {
+            task.AdminUserId=services.GetUserID(HttpContext.User.Identity.Name);
+           services.CreateTask(task);
+
+            return RedirectToAction("Index","Projects");
+        }
+
     }
 }

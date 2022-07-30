@@ -196,6 +196,7 @@
     <Content Include="Areas\Admin\Views\Projects\CreateCategory.cshtml" />
     <Content Include="Areas\Admin\Views\Projects\SeeCategories.cshtml" />
     <Content Include="Areas\Admin\Views\Projects\SeeProjects.cshtml" />
+    <Content Include="Areas\Admin\Views\Projects\CreateTask.cshtml" />
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
     <Content Include="Scripts\jquery-3.6.0.min.js" />

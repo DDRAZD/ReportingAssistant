@@ -6,16 +6,30 @@ using System.Text;
 using ReportingAssistant.DomainModels;
 using ReportingAssistant.RepositoryContracts;
 using ReportingAssistant.DataLayer;
+using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security.Cookies;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace ReportingAssistant.RepositoryLayer
 {
     public class Repository : IRepository
     {
         ReportinAssistantDBContext dbContext;
-
+        RoleManager<IdentityRole> roleManager;
+        ApplicationUserStore appUserStore;
+        ApplicationUserManager userManager;
         public Repository()
         {
-           this.dbContext = new ReportinAssistantDBContext();   
+           this.dbContext = new ReportinAssistantDBContext();
+
+             roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(dbContext)); //this is for the table of role
+
+             appUserStore = new ApplicationUserStore(dbContext);//this is for the table of users
+
+            //creating an ability to manage roles and users:
+             userManager = new ApplicationUserManager(appUserStore);
+
+
         }
 
         public void CreateProject(Project project )
@@ -26,6 +40,8 @@ namespace ReportingAssistant.RepositoryLayer
 
         public void CreateTask(Task task)
         {
+            Project project = dbContext.Projects.Find(task.ProjectID );
+            task.Projects = project;
             dbContext.Tasks.Add(task);
             dbContext.SaveChanges();
         }
@@ -50,7 +66,29 @@ namespace ReportingAssistant.RepositoryLayer
 
        public  List<ApplicationUser> GetUsers()
         {
-            return dbContext.Users.ToList();
+            List<ApplicationUser> users = new List<ApplicationUser>();
+            foreach(var user in userManager.Users.ToList())
+            {
+                
+               if( userManager.IsInRole<ApplicationUser,string>(user.Id, "User")==true)
+                {
+                    users.Add(user);
+                }
+            }
+            return users;
+        }
+
+       public string GetUserID(string UserName)
+        {
+            ApplicationUser user = userManager.FindByName(UserName);
+            if (user != null)
+            {
+                return user.Id;
+            }
+            else
+            {
+                return string.Empty;
+            }
         }
         public void EditFinalComments(FinalComment finalComment)
         {

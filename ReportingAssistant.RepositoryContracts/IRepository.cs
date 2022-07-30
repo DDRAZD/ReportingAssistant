@@ -18,6 +18,8 @@ namespace ReportingAssistant.RepositoryContracts
 
         List<ApplicationUser> GetUsers();
 
+        string GetUserID(string UserName);
+
         void CreateTask(Task task);
 
         void CreateCategory(string categoryName);
