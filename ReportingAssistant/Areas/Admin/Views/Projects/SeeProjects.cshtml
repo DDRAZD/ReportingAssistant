@@ -121,23 +121,73 @@
 
         </th>
 
-        
+
 
     </tr>
     @foreach (var project in Model)
     {
         <tr>
             <td><img class="card-img-top" src="data:image;base64,@project.Photo" alt="Card image cap" /></td>
-            <td>@Html.DisplayFor(item=>project.ProjectID)</td>
-            <td>@Html.DisplayFor(item=>project.ProjectName)</td>
+            <td>@Html.DisplayFor(item => project.ProjectID)</td>
+            <td>@Html.DisplayFor(item => project.ProjectName)</td>
             <td>@Html.DisplayFor(item => project.Categories.CategoryName)</td>
             <td>@Html.DisplayFor(item => project.AvailablityStatus)</td>
             <td>@Html.DisplayFor(item => project.DateOfStart)</td>
-            
+
 
         </tr>
     }
 
+    <tr>
+        <td colspan="9">
+            @{
+                int PrevPageNo = ViewBag.PageNo - 1;
+                if (PrevPageNo == 0)
+                {
+                    PrevPageNo = 1;
+                }
+                int NextPageNo = ViewBag.PageNo + 1;
+                if (NextPageNo > ViewBag.NoOfPages)
+                {
+                    NextPageNo = ViewBag.NoOfPages;
+                }
+
+            }
+            <ul class="pagination justify-content-center">
+
+                <li class="page-item">
+
+                    <a class="page-link" href="@Url.Action("SeeProjects", "Projects", new { Area="Admin", SortColumn = ViewBag.SortColum, IconClass = ViewBag.IconClass, PageNo = PrevPageNo })">Prev</a>
+                </li>
+                @for (int i = 0; i < ViewBag.NoOfPages; i++)
+                {
+                    if (i + 1 == ViewBag.PageNo)
+                    {
+                        <li class="page-item active">
+
+                            <a class="page-link" href="@Url.Action("SeeProjects", "Projects", new { Area="Admin", SortColumn = ViewBag.SortColum, IconClass = ViewBag.IconClass, PageNo = i + 1 })">@(i + 1)</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+
+                            <a class="page-link" href="@Url.Action("SeeProjects", "Projects", new {Area="Admin", SortColumn = ViewBag.SortColum, IconClass = ViewBag.IconClass, PageNo = i + 1 })">@(i + 1)</a>
+                        </li>
+
+                    }
+
+
+                }
+                <li class="page-item">
+
+                    <a class="page-link" href="@Url.Action("SeeProjects", "Projects", new {Area="Admin", SortColumn = ViewBag.SortColum, IconClass = ViewBag.IconClass, PageNo = NextPageNo })">Next</a>
+                </li>
+
+            </ul>
+
+        </td>
+    </tr>
 
 
 </table>

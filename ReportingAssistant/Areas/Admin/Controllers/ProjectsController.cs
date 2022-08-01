@@ -139,7 +139,8 @@ namespace ReportingAssistant.Areas.Admin.Controllers
             return View(categories);
            
         }
-
+        [MyAuthenticationFilter]
+        [AdminAuthroization]
         public ActionResult CreateTask()
         {
             ViewData["Projects"] = services.GetProjects().ToList();

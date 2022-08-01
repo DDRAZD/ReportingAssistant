@@ -9,7 +9,7 @@ namespace ReportingAssistant.ServiceContracts
 {
     public interface IServices
     {
-        List<Task> GetTasks(string UserID);
+        List<Task> GetTasks(string UserName);
         List<Category> GetCategories();
         List<TaskDone> GetTasksDone(string UserID);
         List<FinalComment> GetFinalComments(string UserID);

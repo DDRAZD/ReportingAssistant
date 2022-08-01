@@ -74,9 +74,9 @@ namespace ReportingAssistant.ServiceLayer
             throw new NotImplementedException();
         }
 
-        public List<DomainModels.Task> GetTasks(string UserID)
+        public List<DomainModels.Task> GetTasks(string UserName)
         {
-            throw new NotImplementedException();
+            return repository.GetTasks(UserName);
         }
 
         public List<TaskDone> GetTasksDone(string UserID)

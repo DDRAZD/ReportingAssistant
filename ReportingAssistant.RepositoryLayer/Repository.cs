@@ -110,9 +110,10 @@ namespace ReportingAssistant.RepositoryLayer
             throw new NotImplementedException();
         }
 
-        public List<DomainModels.Task> GetTasks(string UserID)
+        public List<Task> GetTasks(string UserName)
         {
-            throw new NotImplementedException();
+          string UserID=  GetUserID(UserName);
+         return   dbContext.Tasks.Where(t => t.UserID == UserID).ToList();
         }
 
         public List<TaskDone> GetTasksDone(string UserID)

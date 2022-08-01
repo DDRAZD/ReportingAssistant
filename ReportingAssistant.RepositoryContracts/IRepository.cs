@@ -9,7 +9,7 @@ namespace ReportingAssistant.RepositoryContracts
 {
     public interface IRepository
     {
-        List<Task> GetTasks(string UserID);
+        List<Task> GetTasks(string UserName);
         List<TaskDone> GetTasksDone(string UserID);
         List<FinalComment> GetFinalComments(string UserID);
         List<Category> GetCategories();

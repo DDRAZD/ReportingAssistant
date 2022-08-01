@@ -1,7 +1,195 @@
-﻿
+﻿@model List<ReportingAssistant.DomainModels.Task>
+
 @{
     ViewBag.Title = "Index Tasks";
 }
 
 <h2>IndexTasks </h2>
+
+
+<table class="table table-bordered">
+    <tr>
+        <th style="width:25%">Photo</th>
+        <th style="width:15%">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+
+
+                <a href="@Url.Action("Index", "Tasks", new { SortColumn = "TaskID", IconClass="fa-sort-asc", PageNo=1})">Task ID</a>
+                if (ViewBag.SortColumn == "TaskID")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+            else
+            {
+        <a href="@Url.Action("Index", "Tasks", new { SortColumn = "TaskID", IconClass="fa-sort-desc", PageNo=1})">Task ID</a>
+
+                if (ViewBag.SortColumn == "TaskID")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+
+        </th>
+        <th style="width:15%">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+
+
+            <a href="@Url.Action("Index", "Tasks", new {SortColumn = "Screen", IconClass="fa-sort-asc", PageNo=1})">Screen</a>
+                if (ViewBag.SortColumn == "Screen")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+            else
+            {
+        <a href="@Url.Action("Index", "Tasks", new { SortColumn = "Screen", IconClass="fa-sort-desc", PageNo=1})">Screen</a>
+
+                if (ViewBag.SortColumn == "Screen")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+
+        </th>
+        <th style="width:15%">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+
+
+            <a href="@Url.Action("Index", "Tasks", new { SortColumn = "AdminID", IconClass="fa-sort-asc", PageNo=1})">Admin</a>
+                if (ViewBag.SortColumn == "AdminID")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+            else
+            {
+        <a href="@Url.Action("Index", "Tasks", new { SortColumn = "AdminID", IconClass="fa-sort-desc", PageNo=1})">Admin</a>
+
+                if (ViewBag.SortColumn == "AdminID")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+
+        </th>
+        <th style="width:15%">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+
+
+                <a href="@Url.Action("Index", "Tasks", new {SortColumn = "ProjectID", IconClass="fa-sort-asc", PageNo=1})">Project ID</a>
+                if (ViewBag.SortColumn == "ProjectID")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+            else
+            {
+               <a href="@Url.Action("Index", "Tasks", new {SortColumn = "ProjectID", IconClass="fa-sort-desc", PageNo=1})">Project ID</a>
+
+                if (ViewBag.SortColumn == "ProjectID")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+
+        </th>
+
+        <th style="width:15%">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+
+
+                <a href="@Url.Action("Index", "Tasks", new { SortColumn = "DateOfTask", IconClass="fa-sort-asc", PageNo=1})">Date of task</a>
+                if (ViewBag.SortColumn == "DateOfTask")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+            else
+            {
+                <a href="@Url.Action("Index", "Tasks", new { SortColumn = "DateOfTask", IconClass="fa-sort-desc", PageNo=1})">Date of task</a>
+
+                if (ViewBag.SortColumn == "DateOfTask")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+
+        </th>
+
+
+
+    </tr>
+    @foreach (var task in Model)
+    {
+        <tr>
+            <td><img class="card-img-top" src="data:image;base64,@task.Attachment" alt="Card image cap" /></td>
+            <td>@Html.DisplayFor(item => task.TaskID)</td>
+            <td>@Html.DisplayFor(item => task.Screen)</td>
+            <td>@Html.DisplayFor(item => task.AdminUsers.UserName)</td>
+            <td>@Html.DisplayFor(item => task.ProjectID)</td>
+            <td>@Html.DisplayFor(item => task.DateOfTask)</td>
+
+
+        </tr>
+    }
+
+    <tr>
+        <td colspan="9">
+            @{
+                int PrevPageNo = ViewBag.PageNo - 1;
+                if (PrevPageNo == 0)
+                {
+                    PrevPageNo = 1;
+                }
+                int NextPageNo = ViewBag.PageNo + 1;
+                if (NextPageNo > ViewBag.NoOfPages)
+                {
+                    NextPageNo = ViewBag.NoOfPages;
+                }
+
+            }
+            <ul class="pagination justify-content-center">
+
+                <li class="page-item">
+
+                    <a class="page-link" href="@Url.Action("Index", "Tasks", new {  SortColumn = ViewBag.SortColum, IconClass = ViewBag.IconClass, PageNo = PrevPageNo })">Prev</a>
+                </li>
+                @for (int i = 0; i < ViewBag.NoOfPages; i++)
+                {
+                    if (i + 1 == ViewBag.PageNo)
+                    {
+                        <li class="page-item active">
+
+                            <a class="page-link" href="@Url.Action("Index", "Tasks", new {  SortColumn = ViewBag.SortColum, IconClass = ViewBag.IconClass, PageNo = i + 1 })">@(i + 1)</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+
+                            <a class="page-link" href="@Url.Action("Index", "Tasks", new { SortColumn = ViewBag.SortColum, IconClass = ViewBag.IconClass, PageNo = i + 1 })">@(i + 1)</a>
+                        </li>
+
+                    }
+
+
+                }
+                <li class="page-item">
+
+                    <a class="page-link" href="@Url.Action("Index", "Tasks", new { SortColumn = ViewBag.SortColum, IconClass = ViewBag.IconClass, PageNo = NextPageNo })">Next</a>
+                </li>
+
+            </ul>
+
+        </td>
+    </tr>
+
+
+</table>
 
