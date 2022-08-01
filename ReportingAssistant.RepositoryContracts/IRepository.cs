@@ -24,6 +24,10 @@ namespace ReportingAssistant.RepositoryContracts
 
         void CreateCategory(string categoryName);
 
+        void CompleteTask(Task task);
+
+        Task GetTask(long TaskID);
+
         void EditTask(Task task);
 
         void EditTaskDone(TaskDone taskDone);

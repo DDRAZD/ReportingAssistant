@@ -22,6 +22,9 @@ namespace ReportingAssistant.ServiceContracts
         void CreateTask(Task task);
 
         void EditTask(Task task);
+        void CompleteTask(Task task);
+
+        Task GetTask(long TaskID);
 
         void EditTaskDone(TaskDone taskDone);
 

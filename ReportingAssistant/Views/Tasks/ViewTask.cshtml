@@ -1,0 +1,41 @@
+﻿@model ReportingAssistant.DomainModels.Task
+
+@{
+    ViewBag.Title = "ViewTask";
+}
+
+<h2>ViewTask</h2>
+
+<div class="col-md-6">
+
+    @Model.TaskID
+</div>
+
+<div class="col-md-6">
+
+    @Model.Screen
+</div>
+
+<div class="col-md-6">
+
+    @Model.Description
+</div>
+
+<div class="col-md-6">
+
+    @Model.Projects.ProjectName.ToString()
+</div>
+
+
+
+<div class="col-md-6">
+
+    @Model.Users.UserName.ToString()
+</div>
+
+<div class="col-md-6">
+
+    @Model.DateOfTask
+</div>
+
+<a href="@Url.Action("CompleteTask", "Tasks", new { TaskID = Model.TaskID })">Click to complete task</a>

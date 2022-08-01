@@ -83,5 +83,14 @@ namespace ReportingAssistant.ServiceLayer
         {
             throw new NotImplementedException();
         }
+        public void CompleteTask(Task task)
+        {
+            repository.CompleteTask(task);
+        }
+
+       public  Task GetTask(long TaskID)
+        {
+           return repository.GetTask(TaskID);
+        }
     }
 }

@@ -77,7 +77,23 @@ namespace ReportingAssistant.Controllers
 
             return View(tasks);
             }
+
+        public ActionResult ViewTask(long taskID)
+        {
+           Task task = services.GetTask(taskID);
+            return View(task);
         }
+        public ActionResult CompleteTask(long taskID)
+        {
+            Task task = services.GetTask(taskID);
+            services.CompleteTask(task);
+            return View();
+        }
+
+        
+    }
+
+    
 
         
     }

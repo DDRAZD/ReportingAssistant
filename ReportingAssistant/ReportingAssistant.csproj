@@ -353,6 +353,8 @@
     <Content Include="Views\Account\UserHome.cshtml" />
     <Content Include="Views\Account\ChangePassword.cshtml" />
     <Content Include="Views\Tasks\Index.cshtml" />
+    <Content Include="Views\Tasks\CompleteTask.cshtml" />
+    <Content Include="Views\Tasks\ViewTask.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

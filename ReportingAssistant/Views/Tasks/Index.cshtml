@@ -9,7 +9,7 @@
 
 <table class="table table-bordered">
     <tr>
-        <th style="width:25%">Photo</th>
+        <th style="width:15%">Photo</th>
         <th style="width:15%">
             @if (ViewBag.IconClass == "fa-sort-desc")
             {
@@ -134,6 +134,7 @@
             <td>@Html.DisplayFor(item => task.AdminUsers.UserName)</td>
             <td>@Html.DisplayFor(item => task.ProjectID)</td>
             <td>@Html.DisplayFor(item => task.DateOfTask)</td>
+            <td><a class="page-link" href="@Url.Action("ViewTask", "Tasks", new { taskID = task.TaskID})">View Task</a></td>
 
 
         </tr>

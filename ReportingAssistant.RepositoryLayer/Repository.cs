@@ -120,5 +120,25 @@ namespace ReportingAssistant.RepositoryLayer
         {
             throw new NotImplementedException();
         }
+
+        public void CompleteTask(Task task)
+        {
+            TaskDone taskDone = new TaskDone();
+            taskDone.ProjectID = task.ProjectID;
+            taskDone.DateOfTaskDone= DateTime.Now;
+            taskDone.AdminUsers = task.AdminUsers;
+            taskDone.Attachment=task.Attachment;
+            taskDone.Description=task.Description;
+            taskDone.Screen=task.Screen;   
+            taskDone.Users=task.Users;
+            dbContext.TasksDone.Add(taskDone);
+            dbContext.Tasks.Remove(task);
+            dbContext.SaveChanges();
+        }
+
+      public  Task GetTask(long TaskID)
+        {
+           return dbContext.Tasks.FirstOrDefault(y=>y.TaskID == TaskID);
+        }
     }
 }
