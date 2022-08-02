@@ -5,6 +5,7 @@ using System.Text;
 //using System.Threading.Tasks;
 using ReportingAssistant.DomainModels;
 
+
 namespace ReportingAssistant.ServiceContracts
 {
     public interface IServices
@@ -32,11 +33,23 @@ namespace ReportingAssistant.ServiceContracts
 
         void CreateProject(Project project);
 
-        void CreateCategory(string categoryName);   
+        void CreateCategory(string categoryName);
+
+        ApplicationUser FindUser(string Username, string Password);
+        ApplicationUser FindUserByID(string UserID);
+
+        bool IsAdmin(ApplicationUser User);
+
+        System.Security.Claims.ClaimsIdentity CreateIdentity(ApplicationUser user);
+
+        void ChangePassword(string newPassword, string userID);
+
+        string CreateNewUser(string Email, string UserName, string PasswordHash, string City, string Country, string Address, string PhoneNumber);
 
 
-        
 
-        
+
+
+
     }
 }

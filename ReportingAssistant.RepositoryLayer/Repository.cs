@@ -140,5 +140,48 @@ namespace ReportingAssistant.RepositoryLayer
         {
            return dbContext.Tasks.FirstOrDefault(y=>y.TaskID == TaskID);
         }
+
+        public ApplicationUser FindUser(string Username, string Password)
+        {
+            ApplicationUser user = userManager.Find(Username, Password);
+            return user;
+        }
+        public ApplicationUser FindUserByID(string UserID)
+        {
+            ApplicationUser user = userManager.FindById(UserID);
+            return user;
+        }
+
+        public bool IsAdmin(ApplicationUser User)
+        {
+           return userManager.IsInRole(User.Id, "Admin");
+        }
+
+       public System.Security.Claims.ClaimsIdentity CreateIdentity(ApplicationUser user)
+        {
+            var userIdentity = userManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
+            return userIdentity;
+        }
+
+        public void ChangePassword(string newPassword, string userId)
+        {
+            ApplicationUser appUser = userManager.FindById(userId);
+            appUser.PasswordHash = newPassword;
+            userManager.Update(appUser);
+        }
+
+        public string CreateUser(ApplicationUser user)
+        {
+            IdentityResult result = userManager.Create(user);
+            if (result.Succeeded)
+            {
+                userManager.AddToRole(user.Id, "User");
+                return user.Id;
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }

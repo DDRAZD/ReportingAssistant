@@ -7,6 +7,9 @@ using ReportingAssistant.ServiceContracts;
 using ReportingAssistant.DomainModels;
 using ReportingAssistant.RepositoryLayer;
 using ReportingAssistant.RepositoryContracts;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity;
+
 
 
 namespace ReportingAssistant.ServiceLayer
@@ -91,6 +94,42 @@ namespace ReportingAssistant.ServiceLayer
        public  Task GetTask(long TaskID)
         {
            return repository.GetTask(TaskID);
+        }
+
+       public  ApplicationUser FindUser(string Username, string Password)
+        {
+          return repository.FindUser(Username, Password);
+        }
+
+        public ApplicationUser FindUserByID(string UserID)
+        {
+            return repository.FindUserByID(UserID);
+        }
+
+        public bool IsAdmin(ApplicationUser User)
+        {
+            return repository.IsAdmin(User);
+        }
+
+        public System.Security.Claims.ClaimsIdentity CreateIdentity( ApplicationUser user)
+        {
+            
+            return repository.CreateIdentity(user);
+            
+        }
+
+        public void ChangePassword(string newPassword, string userID)
+        {
+            repository.ChangePassword(newPassword, userID);
+        }
+
+       public string CreateNewUser(string Email, string UserName, string PasswordHash, string City, string Country, string Address, string PhoneNumber)
+        {
+            var user = new ApplicationUser() { Email = Email, UserName = UserName, PasswordHash = PasswordHash, City = City, Country = Country, Address = Address, PhoneNumber = PhoneNumber };
+
+            string result = repository.CreateUser(user);
+           
+            return result;
         }
     }
 }

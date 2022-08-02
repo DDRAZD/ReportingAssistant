@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 //using System.Threading.Tasks;
 using ReportingAssistant.DomainModels;
+using Microsoft.AspNet.Identity;
+
 
 namespace ReportingAssistant.RepositoryContracts
 {
@@ -35,6 +37,17 @@ namespace ReportingAssistant.RepositoryContracts
         void EditFinalComments(FinalComment finalComment);
 
         void CreateProject(Project project);
+
+        ApplicationUser FindUser(string Username, string Password);
+        ApplicationUser FindUserByID(string UserID);
+
+        bool IsAdmin(ApplicationUser User);
+
+        System.Security.Claims.ClaimsIdentity CreateIdentity(ApplicationUser user);
+
+        void ChangePassword(string newPassword, string userID);
+
+        string CreateUser(ApplicationUser user);
 
     }
 }

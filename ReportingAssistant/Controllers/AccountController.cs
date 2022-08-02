@@ -5,8 +5,11 @@ using System.Web;
 using System.Web.Mvc;
 using ReportingAssistant.ViewModels;
 using ReportingAssistant.DomainModels;
-using ReportingAssistant.DataLayer;
 using Microsoft.AspNet.Identity;
+
+using ReportingAssistant.ServiceContracts;
+using ReportingAssistant.ServiceLayer;
+
 using System.Web.Helpers;
 using ReportingAssistant.Filters;
 
@@ -15,7 +18,12 @@ namespace ReportingAssistant.Controllers
     public class AccountController : Controller
     {
         // GET: Account
-       
+        IServices services;
+
+       public AccountController()
+        {
+            this.services = new Services();
+        }
 
         public ActionResult Login()
         {
@@ -25,14 +33,16 @@ namespace ReportingAssistant.Controllers
         [HttpPost]
         public ActionResult Login(RegisterViewModel lvm)
         {
-            var appDbContext = new ReportinAssistantDBContext();
+           /* var appDbContext = new ReportinAssistantDBContext();
             var userStore = new ApplicationUserStore(appDbContext);
             var userManager = new ApplicationUserManager(userStore);
-            var user = userManager.Find(lvm.Username, lvm.Password);
+            var user = userManager.Find(lvm.Username, lvm.Password);*/
+
+            var user = services.FindUser(lvm.Username, lvm.Password);
             if (user != null)
             {
-                this.LoginUser(userManager, user);
-                if (userManager.IsInRole(user.Id, "Admin"))
+                this.LoginUser(user);
+                if (services.IsAdmin(user))
                 {
                     return RedirectToAction("Index", "Home", new { area = "Admin" });
                 }
@@ -50,10 +60,11 @@ namespace ReportingAssistant.Controllers
         [MyAuthenticationFilter]
         public ActionResult UserHome()
         {
-            var appDbContext = new ReportinAssistantDBContext();
-            var userStore = new ApplicationUserStore(appDbContext);
-            var userManager = new ApplicationUserManager(userStore);
-            ApplicationUser appUser = userManager.FindById(User.Identity.GetUserId());
+            /* var appDbContext = new ReportinAssistantDBContext();
+             var userStore = new ApplicationUserStore(appDbContext);
+             var userManager = new ApplicationUserManager(userStore);*/
+            //ApplicationUser appUser = userManager.FindById(User.Identity.GetUserId());
+            ApplicationUser appUser = services.FindUserByID(User.Identity.GetUserId());
             return View(appUser);
         }
 
@@ -71,21 +82,23 @@ namespace ReportingAssistant.Controllers
             if (ModelState.IsValid)//validation is valid of all the formats and required fields
             {
                 //register
-                var appDbContext = new ReportinAssistantDBContext();
+             /*   var appDbContext = new ReportinAssistantDBContext();
                 var userStore = new ApplicationUserStore(appDbContext);
-                var userManager = new ApplicationUserManager(userStore);
+                var userManager = new ApplicationUserManager(userStore);*/
                 var passwordHash = Crypto.HashPassword(rvm.Password);
-                var user = new ApplicationUser() { Email = rvm.Email, UserName = rvm.Username, PasswordHash = passwordHash, City = rvm.City, Country = rvm.Country, Address = rvm.Address, PhoneNumber = rvm.Mobile };
+                // var user = new ApplicationUser() { Email = rvm.Email, UserName = rvm.Username, PasswordHash = passwordHash, City = rvm.City, Country = rvm.Country, Address = rvm.Address, PhoneNumber = rvm.Mobile };
 
-                IdentityResult result = userManager.Create(user);
+                //   IdentityResult result = userManager.Create(user);
+                string result = services.CreateNewUser(rvm.Email, rvm.Username, passwordHash, rvm.City, rvm.Country, rvm.Address, rvm.Mobile);
 
-                if (result.Succeeded)
+                if (result!=null)
                 {
                     //role
-                    userManager.AddToRole(user.Id, "User");
+                   // userManager.AddToRole(user.Id, "User");
 
                     //  LoginUser(userManager, user);
-                    this.LoginUser(userManager, user);
+                    ApplicationUser user =services.FindUserByID(result);
+                    this.LoginUser(user);
                     return RedirectToAction("UserHome", "Account");
 
                 }
@@ -103,10 +116,11 @@ namespace ReportingAssistant.Controllers
 
 
         [NonAction]
-        public void LoginUser(ApplicationUserManager userManager, ApplicationUser user)
+        public void LoginUser(ApplicationUser user)
         {
             var authernicationManager = HttpContext.GetOwinContext().Authentication;
-            var userIdentity = userManager.CreateIdentity(user,DefaultAuthenticationTypes.ApplicationCookie);
+            //var userIdentity = userManager.CreateIdentity(user,DefaultAuthenticationTypes.ApplicationCookie);
+            var userIdentity = services.CreateIdentity(user);
             authernicationManager.SignIn(new Microsoft.Owin.Security.AuthenticationProperties(),userIdentity);
         }
         [MyAuthenticationFilter]
@@ -127,13 +141,16 @@ namespace ReportingAssistant.Controllers
         [HttpPost]
         public ActionResult ChangePassword(RegisterViewModel rvm)
         {
-            var appDbContext = new ReportinAssistantDBContext();
+           /* var appDbContext = new ReportinAssistantDBContext();
             var userStore = new ApplicationUserStore(appDbContext);
-            var userManager = new ApplicationUserManager(userStore);
-            ApplicationUser appUser = userManager.FindById(User.Identity.GetUserId());
+            var userManager = new ApplicationUserManager(userStore);*/
+           // ApplicationUser appUser = userManager.FindById(User.Identity.GetUserId());
+            
             var passwordHash = Crypto.HashPassword(rvm.Password);
-            appUser.PasswordHash = passwordHash;
-            userManager.Update(appUser);
+          //  appUser.PasswordHash = passwordHash;
+
+            services.ChangePassword(passwordHash, User.Identity.GetUserId());
+           // userManager.Update(appUser);
             return RedirectToAction("UserHome", "Account");
         }
     }
