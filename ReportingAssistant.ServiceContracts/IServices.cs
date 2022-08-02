@@ -12,7 +12,7 @@ namespace ReportingAssistant.ServiceContracts
     {
         List<Task> GetTasks(string UserName);
         List<Category> GetCategories();
-        List<TaskDone> GetTasksDone(string UserID);
+        List<TaskDone> GetTasksDone(string UserName);
         List<FinalComment> GetFinalComments(string UserID);
 
         List<Project> GetProjects();
@@ -27,6 +27,7 @@ namespace ReportingAssistant.ServiceContracts
 
         Task GetTask(long TaskID);
 
+        TaskDone GetTaskDone(long TaskID);
         void EditTaskDone(TaskDone taskDone);
 
         void EditFinalComments(FinalComment finalComment);

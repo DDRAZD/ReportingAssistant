@@ -69,7 +69,7 @@ namespace ReportingAssistant.ServiceLayer
 
         public void EditTaskDone(TaskDone taskDone)
         {
-            throw new NotImplementedException();
+            repository.EditTaskDone(taskDone);
         }
 
         public List<FinalComment> GetFinalComments(string UserID)
@@ -82,9 +82,9 @@ namespace ReportingAssistant.ServiceLayer
             return repository.GetTasks(UserName);
         }
 
-        public List<TaskDone> GetTasksDone(string UserID)
+        public List<TaskDone> GetTasksDone(string UserName)
         {
-            throw new NotImplementedException();
+            return repository.GetTasksDone(UserName);
         }
         public void CompleteTask(Task task)
         {
@@ -123,7 +123,12 @@ namespace ReportingAssistant.ServiceLayer
             repository.ChangePassword(newPassword, userID);
         }
 
-       public string CreateNewUser(string Email, string UserName, string PasswordHash, string City, string Country, string Address, string PhoneNumber)
+        public TaskDone GetTaskDone(long TaskID)
+        {
+            return repository.GetTaskDone(TaskID);
+        }
+
+        public string CreateNewUser(string Email, string UserName, string PasswordHash, string City, string Country, string Address, string PhoneNumber)
         {
             var user = new ApplicationUser() { Email = Email, UserName = UserName, PasswordHash = PasswordHash, City = City, Country = Country, Address = Address, PhoneNumber = PhoneNumber };
 

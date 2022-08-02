@@ -102,7 +102,16 @@ namespace ReportingAssistant.RepositoryLayer
 
         public void EditTaskDone(TaskDone taskDone)
         {
-            throw new NotImplementedException();
+          TaskDone taskDoneToSave =   GetTaskDone(taskDone.TaskDoneID);
+            taskDoneToSave.Screen = taskDone.Screen;
+            taskDoneToSave.Description=taskDone.Description;
+            taskDoneToSave.ProjectID=taskDone.ProjectID;
+            taskDoneToSave.UserID=taskDone.UserID;
+            taskDoneToSave.AdminUserId=taskDone.AdminUserId;
+            taskDoneToSave.DateOfTaskDone=taskDone.DateOfTaskDone;
+            taskDoneToSave.TaskDoneID=taskDone.TaskDoneID;
+            taskDoneToSave.Attachment=taskDone.Attachment;
+            dbContext.SaveChanges();
         }
 
         public List<FinalComment> GetFinalComments(string UserID)
@@ -116,11 +125,16 @@ namespace ReportingAssistant.RepositoryLayer
          return   dbContext.Tasks.Where(t => t.UserID == UserID).ToList();
         }
 
-        public List<TaskDone> GetTasksDone(string UserID)
+        public List<TaskDone> GetTasksDone(string UserName)
         {
-            throw new NotImplementedException();
+            string UserID = GetUserID(UserName);
+            return dbContext.TasksDone.Where(t => t.UserID == UserID).ToList();
         }
 
+        public TaskDone GetTaskDone(long TaskID)
+        {
+            return dbContext.TasksDone.FirstOrDefault(y => y.TaskDoneID == TaskID);
+        }
         public void CompleteTask(Task task)
         {
             TaskDone taskDone = new TaskDone();
@@ -130,7 +144,7 @@ namespace ReportingAssistant.RepositoryLayer
             taskDone.Attachment=task.Attachment;
             taskDone.Description=task.Description;
             taskDone.Screen=task.Screen;   
-            taskDone.Users=task.Users;
+            taskDone.UserID=task.UserID;
             dbContext.TasksDone.Add(taskDone);
             dbContext.Tasks.Remove(task);
             dbContext.SaveChanges();

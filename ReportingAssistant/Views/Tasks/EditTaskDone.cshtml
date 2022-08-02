@@ -1,0 +1,70 @@
+﻿@model ReportingAssistant.DomainModels.TaskDone
+@using ReportingAssistant.HtmlHelpers
+
+@{
+    ViewBag.Title = "EditTaskDone";
+}
+
+<h2>EditTaskDone</h2>
+
+
+@using (Html.BeginForm("EditTaskDone", "Tasks",
+     FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(temp => temp.TaskDoneID)<!--adding as a hidden field as there is not text box for TaskDone id-->
+    @Html.HiddenFor(temp => temp.UserID)<!--adding as a hidden field as there is not text box for TaskDone id-->
+    @Html.HiddenFor(temp => temp.ProjectID)<!--adding as a hidden field as there is not text box for TaskDone id-->
+    @Html.HiddenFor(temp => temp.AdminUserId)<!--adding as a hidden field as there is not text box for TaskDone id-->
+    <!--first row-->
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            @Html.LabelFor(item => item.Screen)
+            @Html.TextBoxFor(temp => temp.Screen, new { placeholder = "Screen", @class = "form-control", @readonly = "readonly" })
+            @Html.ValidationMessageFor(temp => temp.Screen)
+        </div>
+        <div class="form-group col-md-6">
+            @Html.LabelFor(item => item.Description)
+            @Html.TextBoxFor(item => item.Description, new { placeholder = "Description", @class = "form-control" })
+            @Html.ValidationMessageFor(temp => temp.Description)
+
+        </div>
+    </div>
+
+    <div class="form-row">
+
+        <div class="form-group col-md-6">
+            @Html.LabelFor(item => item.Projects.ProjectName)
+            @Html.TextBoxFor(item => item.Projects.ProjectName, new { placeholder = "ProjectName", @class = "form-control", @readonly = "readonly" })
+            @Html.ValidationMessageFor(temp => temp.ProjectID)
+
+        </div>
+
+        <div class="form-group col-md-6">
+            @Html.LabelFor(item => item.Users.UserName)
+            @Html.TextBoxFor(item => item.Users.UserName, new { placeholder = "UserName", @class = "form-control", @readonly = "readonly" })
+            @Html.ValidationMessageFor(temp => temp.Users.UserName)
+
+        </div>
+
+
+
+
+        <div class="form-group col-md-6">
+            <label for="Attachment">Image</label>
+            @Html.Photo("form-control-file")
+        </div>
+
+
+
+    </div>
+    <div class="form-row">
+        @Html.LabelFor(item => item.DateOfTaskDone)
+        @Html.TextBoxFor(item => item.DateOfTaskDone, new { type = "date", placeholder = "Date of Task", @class = "form-control" })
+        @Html.ValidationMessageFor(temp => temp.DateOfTaskDone)
+    </div>
+
+    @Html.ValidationSummary()
+    <button type="submit" class="btn btn-success">Submit</button>
+
+    <a class="btn btn-danger" href="@Url.Action("Index","Tasks")">Cancel</a>
+}

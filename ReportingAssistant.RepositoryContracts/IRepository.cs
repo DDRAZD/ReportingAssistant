@@ -12,7 +12,7 @@ namespace ReportingAssistant.RepositoryContracts
     public interface IRepository
     {
         List<Task> GetTasks(string UserName);
-        List<TaskDone> GetTasksDone(string UserID);
+        List<TaskDone> GetTasksDone(string UserName);
         List<FinalComment> GetFinalComments(string UserID);
         List<Category> GetCategories();
 
@@ -30,6 +30,7 @@ namespace ReportingAssistant.RepositoryContracts
 
         Task GetTask(long TaskID);
 
+        TaskDone GetTaskDone(long TaskID);
         void EditTask(Task task);
 
         void EditTaskDone(TaskDone taskDone);

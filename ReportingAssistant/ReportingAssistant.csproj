@@ -355,6 +355,8 @@
     <Content Include="Views\Tasks\Index.cshtml" />
     <Content Include="Views\Tasks\CompleteTask.cshtml" />
     <Content Include="Views\Tasks\ViewTask.cshtml" />
+    <Content Include="Views\Tasks\EditTaskDone.cshtml" />
+    <Content Include="Views\Tasks\SeeTasksDone.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
