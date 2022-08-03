@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using ReportingAssistant.DomainModels;
 using ReportingAssistant.ServiceContracts;
-using ReportingAssistant.ServiceLayer;
+//using ReportingAssistant.ServiceLayer;
 
 namespace ReportingAssistant.Controllers
 {
@@ -15,9 +15,10 @@ namespace ReportingAssistant.Controllers
         IServices services;
         // GET: Tasks
 
-        public TasksController()
+        public TasksController(IServices servicesInjected)
         {
-            this.services = new Services();
+            //this.services = new Services();
+            this.services = servicesInjected;
         }
 
         public ActionResult Index(string SortColumn="TaskID", int PageNo=1, string IconClass= "fa-sort-asc")

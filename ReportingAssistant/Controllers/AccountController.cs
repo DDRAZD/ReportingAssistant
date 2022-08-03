@@ -8,7 +8,7 @@ using ReportingAssistant.DomainModels;
 using Microsoft.AspNet.Identity;
 
 using ReportingAssistant.ServiceContracts;
-using ReportingAssistant.ServiceLayer;
+//using ReportingAssistant.ServiceLayer;
 
 using System.Web.Helpers;
 using ReportingAssistant.Filters;
@@ -20,9 +20,10 @@ namespace ReportingAssistant.Controllers
         // GET: Account
         IServices services;
 
-       public AccountController()
+       public AccountController(IServices servicesInjected)
         {
-            this.services = new Services();
+            //  this.services = new Services();
+            this.services= servicesInjected;
         }
 
         public ActionResult Login()

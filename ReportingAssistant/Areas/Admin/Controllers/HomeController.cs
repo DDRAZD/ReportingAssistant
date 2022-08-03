@@ -8,7 +8,7 @@ using ReportingAssistant.DomainModels;
 using Microsoft.AspNet.Identity;
 using ReportingAssistant.Filters;
 using ReportingAssistant.ServiceContracts;
-using ReportingAssistant.ServiceLayer;
+//using ReportingAssistant.ServiceLayer;
 
 namespace ReportingAssistant.Areas.Admin.Controllers
 {
@@ -17,9 +17,10 @@ namespace ReportingAssistant.Areas.Admin.Controllers
         IServices services;
 
 
-        public HomeController()
+        public HomeController(IServices servicesInjected)
         {
-            this.services = new Services();
+            //this.services = new Services();
+            this.services = servicesInjected;
         }
         // GET: Admin/Home
         [MyAuthenticationFilter]

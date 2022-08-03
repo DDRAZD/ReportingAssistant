@@ -65,6 +65,10 @@ Enable-Migrations -ContextTypeName ReportingAssistant.Models.ReportinAssistantDB
  update-database -Configuration ReportingAssistant.Migrations.Configuration
 
  
+ for dependancy injection:
+
+ install-package unity.Mvc for the project level (i.e. not the c# libraries projects)-> file UnityConfig.cs will be aututomatically created in App_start
+ in UnityConfig.cs, import the servicecontracts and service layer (That will be injected)
 
  ------------------------------------------------------
 

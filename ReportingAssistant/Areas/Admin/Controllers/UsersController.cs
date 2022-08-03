@@ -7,7 +7,7 @@ using System.Web.Mvc;
 using ReportingAssistant.Filters;
 using ReportingAssistant.DomainModels;
 using ReportingAssistant.ServiceContracts;
-using ReportingAssistant.ServiceLayer;
+//using ReportingAssistant.ServiceLayer;
 
 namespace ReportingAssistant.Areas.Admin.Controllers
 {
@@ -16,9 +16,10 @@ namespace ReportingAssistant.Areas.Admin.Controllers
 
         IServices services;
 
-        public UsersController()
+        public UsersController(IServices servicesInjected)
         {
-            this.services=new Services();
+           // this.services=new Services();
+           this.services = servicesInjected;
         }
         // GET: Admin/Users
         [MyAuthenticationFilter]
